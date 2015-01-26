@@ -23,12 +23,19 @@ public class player : MonoBehaviour {
 		// Calculate the movement vector
 		movement = new Vector2(speed.x * inputX, speed.y * inputY);
 
+<<<<<<< HEAD
 		// Test hp (-5 on space press, +0.05 per update cycle)
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Debug.Log("Ouch, my hp is going down :(");
 			adj_hp (-5.0f);
 		}
 		adj_hp(0.05f);
+=======
+		// Test hp
+		if (Input.GetKeyUp (KeyCode.Space)) adj_hp(-1.0f);
+
+		rotatePlayer ();
+>>>>>>> 82129fa07f31f4ce833f2495fcb6448353349329
 	}
 
 	void FixedUpdate() {
@@ -42,6 +49,39 @@ public class player : MonoBehaviour {
 		if(curr_hp < 0) curr_hp = 0;
 		if(curr_hp > max_hp) curr_hp = max_hp;
 		if(max_hp < 1) max_hp = 1;
+	}
+
+	void rotatePlayer(){
+		Vector3 mouseScreen = Input.mousePosition;
+		Vector3 mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
+		float arcTan = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90;
+		//convention is counterclockwise point is <equal, clockwise is just <
+		//face North
+		if (arcTan < 22.5 && arcTan >= -22.5)
+						arcTan = 0;
+				//north-east
+				else if (arcTan < -22.5 && arcTan >= -67.5)
+						arcTan = -45;
+				//east
+				else if (arcTan < -67.5 && arcTan >= -112.5)
+						arcTan = -90;
+				//south-east
+				else if (arcTan < -112.5 && arcTan >= -157.5)
+						arcTan = -135;
+				//south
+				else if (arcTan < -157.5 && arcTan >= -202.5)
+						arcTan = -180;
+				//south-west
+				else if (arcTan < -202.5 && arcTan >= -247.5)
+						arcTan = -225;
+				//west
+				else if ((arcTan >= -270 && arcTan < -247.5) || (arcTan <= 90 && arcTan >= 67.5))
+						arcTan = 90;
+				//north-west
+				else if (arcTan < 67.5 && arcTan >= 22.5)
+						arcTan = 45;
+		rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
+		Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 	}
 }
 
