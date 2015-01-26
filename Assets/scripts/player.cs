@@ -10,7 +10,9 @@ public class player : MonoBehaviour {
 	public Vector2 movement;
 
 	// Use this for initialization
-	void Start () {}
+	void Start () {
+		Debug.Log("Created new player");
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,8 +23,12 @@ public class player : MonoBehaviour {
 		// Calculate the movement vector
 		movement = new Vector2(speed.x * inputX, speed.y * inputY);
 
-		// Test hp
-		if (Input.GetKeyUp (KeyCode.Space)) adj_hp(-1.0f);
+		// Test hp (-5 on space press, +0.05 per update cycle)
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			Debug.Log("Ouch, my hp is going down :(");
+			adj_hp (-5.0f);
+		}
+		adj_hp(0.05f);
 	}
 
 	void FixedUpdate() {
@@ -30,6 +36,7 @@ public class player : MonoBehaviour {
 		rigidbody2D.velocity = movement;
 	}
 
+	// Adjust hp based on float value
 	void adj_hp(float adj) {
 		curr_hp += adj;
 		if(curr_hp < 0) curr_hp = 0;
