@@ -23,6 +23,8 @@ public class player : MonoBehaviour {
 
 		// Test hp
 		if (Input.GetKeyUp (KeyCode.Space)) adj_hp(-1.0f);
+
+		rotatePlayer ();
 	}
 
 	void FixedUpdate() {
@@ -35,6 +37,15 @@ public class player : MonoBehaviour {
 		if(curr_hp < 0) curr_hp = 0;
 		if(curr_hp > max_hp) curr_hp = max_hp;
 		if(max_hp < 1) max_hp = 1;
+	}
+
+	void rotatePlayer(){
+		Vector3 mouseScreen = Input.mousePosition;
+		Vector3 mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
+		//Quaternion playerDirection = 
+		rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
+		Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
+		//rigidbody2D.transform.Rotate (0,0,-45);
 	}
 }
 
