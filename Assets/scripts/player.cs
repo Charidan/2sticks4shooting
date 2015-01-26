@@ -23,19 +23,16 @@ public class player : MonoBehaviour {
 		// Calculate the movement vector
 		movement = new Vector2(speed.x * inputX, speed.y * inputY);
 
-<<<<<<< HEAD
 		// Test hp (-5 on space press, +0.05 per update cycle)
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Debug.Log("Ouch, my hp is going down :(");
 			adj_hp (-5.0f);
 		}
 		adj_hp(0.05f);
-=======
 		// Test hp
 		if (Input.GetKeyUp (KeyCode.Space)) adj_hp(-1.0f);
 
 		rotatePlayer ();
->>>>>>> 82129fa07f31f4ce833f2495fcb6448353349329
 	}
 
 	void FixedUpdate() {
