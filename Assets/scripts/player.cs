@@ -42,10 +42,34 @@ public class player : MonoBehaviour {
 	void rotatePlayer(){
 		Vector3 mouseScreen = Input.mousePosition;
 		Vector3 mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
-		//Quaternion playerDirection = 
-		rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
+		float arcTan = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90;
+		//convention is counterclockwise point is <equal, clockwise is just <
+		//face North
+		if (arcTan < 22.5 && arcTan >= -22.5)
+						arcTan = 0;
+				//north-east
+				else if (arcTan < -22.5 && arcTan >= -67.5)
+						arcTan = -45;
+				//east
+				else if (arcTan < -67.5 && arcTan >= -112.5)
+						arcTan = -90;
+				//south-east
+				else if (arcTan < -112.5 && arcTan >= -157.5)
+						arcTan = -135;
+				//south
+				else if (arcTan < -157.5 && arcTan >= -202.5)
+						arcTan = -180;
+				//south-west
+				else if (arcTan < -202.5 && arcTan >= -247.5)
+						arcTan = -225;
+				//west
+				else if ((arcTan >= -270 && arcTan < -247.5) || (arcTan <= 90 && arcTan >= 67.5))
+						arcTan = 90;
+				//north-west
+				else if (arcTan < 67.5 && arcTan >= 22.5)
+						arcTan = 45;
+		rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
 		Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
-		//rigidbody2D.transform.Rotate (0,0,-45);
 	}
 }
 
