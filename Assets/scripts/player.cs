@@ -31,13 +31,12 @@ public class player : MonoBehaviour {
 		adj_hp(0.05f);
 		// Test hp
 		if (Input.GetKeyUp (KeyCode.Space)) adj_hp(-1.0f);
-
-		rotatePlayer ();
 	}
 
+	// Use for updates in the players physical movements
 	void FixedUpdate() {
-		// Do the movement
 		rigidbody2D.velocity = movement;
+		rotatePlayer();
 	}
 
 	// Adjust hp based on float value
@@ -48,6 +47,7 @@ public class player : MonoBehaviour {
 		if(max_hp < 1) max_hp = 1;
 	}
 
+	// 8-directional player rotation
 	void rotatePlayer(){
 		Vector3 mouseScreen = Input.mousePosition;
 		Vector3 mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
@@ -78,7 +78,7 @@ public class player : MonoBehaviour {
 				else if (arcTan < 67.5 && arcTan >= 22.5)
 						arcTan = 45;
 		rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
-		Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
+		//Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 	}
 }
 
