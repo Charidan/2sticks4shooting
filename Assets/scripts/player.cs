@@ -80,5 +80,9 @@ public class player : MonoBehaviour {
 		rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
 		//Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 	}
+
+	public float getHP(){
+		return curr_hp;
+	}
 }
 
