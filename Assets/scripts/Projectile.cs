@@ -5,7 +5,7 @@ public abstract class Projectile : MonoBehaviour {
 	
 	// Projectile traits
 	protected int damage;
-	protected player owner;
+	protected Player owner;
 	
 	// Use this for initialization
 	void Start () {
@@ -23,8 +23,8 @@ public abstract class Projectile : MonoBehaviour {
 	}
 	
 	// set functions
-	
-	public void setOwner(ref player newOwner){
+
+	public void setOwner(ref Player newOwner){
 		owner = newOwner;
 	}
 }

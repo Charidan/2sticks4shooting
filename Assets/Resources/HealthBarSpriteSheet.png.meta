@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 17451769ed1e90d4885ca91f9b4252aa
+guid: 0c2bb4f180e9c3a4b8f338204c727ae1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: HealthBarSpriteSheet_0
-    21300002: HealthBarSpriteSheet_1
-    21300004: HealthBarSpriteSheet_2
-    21300006: HealthBarSpriteSheet_3
-    21300008: HealthBarSpriteSheet_4
-    21300010: HealthBarSpriteSheet_5
-    21300012: HealthBarSpriteSheet_6
-    21300014: HealthBarSpriteSheet_7
-    21300016: HealthBarSpriteSheet_8
-    21300018: HealthBarSpriteSheet_9
-    21300020: HealthBarSpriteSheet_10
+    21300000: HealthBarSpriteSheet_1
+    21300002: HealthBarSpriteSheet_2
+    21300004: HealthBarSpriteSheet_3
+    21300006: HealthBarSpriteSheet_4
+    21300008: HealthBarSpriteSheet_5
+    21300010: HealthBarSpriteSheet_6
+    21300012: HealthBarSpriteSheet_7
+    21300014: HealthBarSpriteSheet_8
+    21300016: HealthBarSpriteSheet_9
+    21300018: HealthBarSpriteSheet_10
+    21300020: HealthBarSpriteSheet_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -48,22 +48,12 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: HealthBarSpriteSheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: HealthBarSpriteSheet_1
       rect:
         serializedVersion: 2
@@ -158,6 +148,16 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2560
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HealthBarSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 256
         height: 256

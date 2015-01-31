@@ -28,10 +28,10 @@ public abstract class Weapon : MonoBehaviour {
 	// Information provided by player:
 	// 		Player Position, Reticule Position, Current Ammo
 	// 		Any modifiers associated with using the weapon
-	public abstract void Fire (ref player owner);
+	public abstract void Fire (ref Player owner);
 
 	// included for later
-	public abstract void altFire (ref player owner);
+	public abstract void altFire (ref Player owner);
 
 	// accessors
 	public int getDamage(){
