@@ -27,7 +27,7 @@ public class HealthBar : MonoBehaviour {
 
 		// change the sprite only when the player's health is
 		// less than half way between 2 numbers divisible by 10
-		if (Mathf.RoundToInt(playerHP) % 10 > 4) {
+		if (playerHP % 10 > 4) {
 						healthSpriteIndex = Mathf.CeilToInt (playerHP / 10);
 						Debug.Log (healthSpriteIndex);
 				} else {
