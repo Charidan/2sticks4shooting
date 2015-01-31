@@ -4,7 +4,7 @@ using System.Collections;
 public class HealthBar : MonoBehaviour {
 
 	private Sprite[] healthSprites;
-	private float playerHP;
+	private int playerHP;
 	private Player owner;
 	private int healthSpriteIndex;
 	void Awake(){
@@ -22,18 +22,20 @@ public class HealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		int mapHPtoIndex = 1000;
 		transform.position = owner.transform.position;
 		playerHP = owner.getHP ();
 
-		// change the sprite only when the player's health is
-		// less than half way between 2 numbers divisible by 10
-		if (playerHP % 10 > 4) {
-						healthSpriteIndex = Mathf.CeilToInt (playerHP / 10);
-						Debug.Log (healthSpriteIndex);
-				} else {
-						healthSpriteIndex = Mathf.FloorToInt (playerHP / 10);
-						Debug.Log (healthSpriteIndex);
-				}
+		// Only change the sprite when the player health is < 1/2 the value
+		// of the ceiling of its integer value divided by mapHPtoIndex
+		// Example:
+		// playerHP = 9400, healthSpriteIndex = 9
+		// playerHP = 9600, healthSpriteIndex = 10
+		if (playerHP % mapHPtoIndex > 499) {
+			healthSpriteIndex = playerHP/mapHPtoIndex + 1;
+		} else {
+			healthSpriteIndex = playerHP/mapHPtoIndex; 
+		}
 		GetComponent<SpriteRenderer> ().sprite = healthSprites [healthSpriteIndex];
 	}
 }

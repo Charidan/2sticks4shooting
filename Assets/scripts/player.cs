@@ -4,15 +4,15 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	
 	// Initialize player attributes
-	public float max_hp;
-	public float curr_hp;
+	public int max_hp;
+	public int curr_hp;
 	public Vector2 speed;
 	public Vector2 movement;
 	
 	// Use this for initialization
 	void Start () {
-		max_hp = 100.0f;
-		curr_hp = 100.0f;
+		max_hp = 10000;
+		curr_hp = 10000;
 		speed = new Vector2 (10, 10);
 		Debug.Log("Created new player");
 	}
@@ -28,19 +28,19 @@ public class Player : MonoBehaviour {
 		
 		// Allows only partial health regeneration up to the nearest 10
 		// Lets current return to 100 from a value between 99 and 100
-		if(Mathf.RoundToInt(curr_hp) == 100)
-			curr_hp = 100;
-		else if (Mathf.RoundToInt (curr_hp) % 10 != 0) {
-			adj_hp (0.05f);
+		if(Mathf.RoundToInt(curr_hp) == 10000)
+			curr_hp = 10000;
+		else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) {
+			adj_hp (5);
 		}
 		
 		// Test hp (-5 on space press, +0.05 per update cycle)
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Debug.Log("Ouch, my hp is going down :(");
-			adj_hp (-5.0f);
+			adj_hp (-500);
 		}
 		// Test hp
-		if (Input.GetKeyUp (KeyCode.Space)) adj_hp(-1.0f);
+		//if (Input.GetKeyUp (KeyCode.Space)) adj_hp(-250);
 	}
 	
 	// Use for updates in the players physical movements
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	// Adjust hp based on float value
-	void adj_hp(float adj) {
+	void adj_hp(int adj) {
 		curr_hp += adj;
 		if(curr_hp < 0) curr_hp = 0;
 		if(curr_hp > max_hp) curr_hp = max_hp;
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour {
 		//Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 	}
 	
-	public float getHP(){
+	public int getHP(){
 		return curr_hp;
 	}
 }
