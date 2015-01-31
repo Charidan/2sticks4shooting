@@ -4,13 +4,16 @@ using System.Collections;
 public class player : MonoBehaviour {
 
 	// Initialize player attributes
-	public float max_hp = 100.0f;
-	public float curr_hp = 100.0f;
-	public Vector2 speed = new Vector2(10, 10);
+	public float max_hp;
+	public float curr_hp;
+	public Vector2 speed;
 	public Vector2 movement;
 
 	// Use this for initialization
 	void Start () {
+		max_hp = 100.0f;
+		curr_hp = 100.0f;
+		speed = new Vector2 (10, 10);
 		Debug.Log("Created new player");
 	}
 	
@@ -23,12 +26,15 @@ public class player : MonoBehaviour {
 		// Calculate the movement vector
 		movement = new Vector2(speed.x * inputX, speed.y * inputY);
 
+		// Allows only partial health regeneration up to the nearest 10
+		if(Mathf.Ceil(curr_hp) % 10 != 0)
+			adj_hp(0.05f);
+
 		// Test hp (-5 on space press, +0.05 per update cycle)
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Debug.Log("Ouch, my hp is going down :(");
 			adj_hp (-5.0f);
 		}
-		adj_hp(0.05f);
 		// Test hp
 		if (Input.GetKeyUp (KeyCode.Space)) adj_hp(-1.0f);
 	}
