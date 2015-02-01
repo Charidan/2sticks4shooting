@@ -244,7 +244,7 @@ GameObject:
   - 4: {fileID: 1088143048}
   - 212: {fileID: 1088143047}
   - 114: {fileID: 1088143049}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
