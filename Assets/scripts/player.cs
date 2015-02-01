@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	// Initialize player attributes
 	protected int max_hp;
 	protected int curr_hp;
+	protected int curr_ammo;
 	public Vector2 speed;
 	public Vector2 movement;
 	
@@ -97,6 +98,10 @@ public class Player : MonoBehaviour {
 
 	public int getMaxHP(){
 		return max_hp;
+	}
+
+	public int getAmmo(){
+		return curr_ammo;
 	}
 }
 

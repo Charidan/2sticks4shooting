@@ -9,7 +9,7 @@ using System.Collections;
 public abstract class Weapon : MonoBehaviour {
 	// Weapon Traits
 	// implement in children
-	protected int damage;
+	protected int damagePerProjectile;
 	protected int maxClipSize;
 	protected int reloadSpeed;
 	protected int fireRate;
@@ -35,7 +35,7 @@ public abstract class Weapon : MonoBehaviour {
 
 	// accessors
 	public int getDamage(){
-		return damage;
+		return damagePerProjectile;
 	}
 
 	public int getClipSize(){

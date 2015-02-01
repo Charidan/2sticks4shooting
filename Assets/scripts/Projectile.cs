@@ -18,7 +18,7 @@ public abstract class Projectile : MonoBehaviour {
 	}
 	
 	// accessor functions
-	public int getProjectileDamage(){
+	public int getDamage(){
 		return damage;
 	}
 	
