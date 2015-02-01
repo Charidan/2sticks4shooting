@@ -4,8 +4,8 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	
 	// Initialize player attributes
-	public int max_hp;
-	public int curr_hp;
+	protected int max_hp;
+	protected int curr_hp;
 	public Vector2 speed;
 	public Vector2 movement;
 	
@@ -30,13 +30,12 @@ public class Player : MonoBehaviour {
 		// Lets current return to 100 from a value between 99 and 100
 		if(Mathf.RoundToInt(curr_hp) == 10000)
 			curr_hp = 10000;
-		else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) {
+		else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
 			adj_hp (5);
-		}
 		
 		// Test hp (-5 on space press, +0.05 per update cycle)
 		if (Input.GetKeyDown(KeyCode.Space)) {
-			Debug.Log("Ouch, my hp is going down :(");
+			Debug.Log("Ouch, my hp is going down :(" + curr_hp + ")");
 			adj_hp (-500);
 		}
 		// Test hp
@@ -49,7 +48,7 @@ public class Player : MonoBehaviour {
 		rotatePlayer();
 	}
 	
-	// Adjust hp based on float value
+	// Adjust hp based on integer value
 	void adj_hp(int adj) {
 		curr_hp += adj;
 		if(curr_hp < 0) curr_hp = 0;
@@ -90,9 +89,14 @@ public class Player : MonoBehaviour {
 		rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
 		//Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 	}
-	
+
+	// accessor functions
 	public int getHP(){
 		return curr_hp;
+	}
+
+	public int getMaxHP(){
+		return max_hp;
 	}
 }
 
