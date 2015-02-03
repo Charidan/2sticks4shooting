@@ -7,6 +7,11 @@ public class Player : MonoBehaviour {
 	protected int max_hp;
 	protected int curr_hp;
 	protected int curr_ammo;
+	protected int curr_ammo_weapon0;
+	protected int curr_ammo_weapon1;
+	// fields of type "Weapon" are pointers to instances of Weapons inside class WeaponManager
+	protected Weapon curr_weapon;
+	protected Weapon[] held_weapons;
 	public Vector2 speed;
 	public Vector2 movement;
 	
@@ -14,6 +19,12 @@ public class Player : MonoBehaviour {
 	void Start () {
 		max_hp = 10000;
 		curr_hp = 10000;
+		// should be changed when player has weapons to start with instead of initializing all fields to zero
+		curr_ammo = curr_ammo_weapon0 = curr_ammo_weapon1 = 0;
+		// Weapon array initialization should become an initializer list in place of the current building process
+		held_weapons = new Weapon [2];
+		curr_weapon = held_weapons [0] = null;
+		held_weapons [1] = null;
 		speed = new Vector2 (10, 10);
 		Debug.Log("Created new player");
 	}
@@ -102,6 +113,10 @@ public class Player : MonoBehaviour {
 	
 	public int getAmmo(){
 		return curr_ammo;
+	}
+
+	public Weapon getCurrWeapon(){
+		return curr_weapon;
 	}
 }
 

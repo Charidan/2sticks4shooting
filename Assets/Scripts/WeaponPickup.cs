@@ -3,12 +3,11 @@ using System.Collections;
 
 public class WeaponPickup : MonoBehaviour {
 
-	// Weapon list index. Random with lower probability on more valuable weapons
+	// Index of weapon type available on pickup
 	int Weapon;
 
 	// Use this for initialization
 	void Start () {
-		// Define type of weapon pickup
 	}
 	
 	// Update is called once per frame
