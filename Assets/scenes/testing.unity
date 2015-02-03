@@ -87,7 +87,7 @@ GameObject:
   - 50: {fileID: 219692119}
   - 114: {fileID: 219692118}
   m_Layer: 0
-  m_Name: player1
+  m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,7 +421,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 124128, guid: 6f7f49230f20af140bdac01a05dc3a64, type: 2}
       propertyPath: m_Name
-      value: player1
+      value: Player1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f7f49230f20af140bdac01a05dc3a64, type: 2}
@@ -439,7 +439,7 @@ GameObject:
   - 212: {fileID: 793660585}
   - 61: {fileID: 793660584}
   m_Layer: 0
-  m_Name: wall
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +503,7 @@ GameObject:
   - 50: {fileID: 2006487470}
   - 114: {fileID: 2006487474}
   m_Layer: 0
-  m_Name: enemy
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

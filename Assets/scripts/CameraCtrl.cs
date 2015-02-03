@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class camera : MonoBehaviour {
+public class CameraCtrl : MonoBehaviour {
 
 	public float speed = 10.0f;
 	public Transform target;

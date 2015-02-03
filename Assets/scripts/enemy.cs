@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour {
 
 	public float trans_x = 0.0f;
 	public float trans_y = 0.0f;
