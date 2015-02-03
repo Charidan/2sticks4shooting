@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 405312}
   - 212: {fileID: 21205312}
   - 114: {fileID: 11405312}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
