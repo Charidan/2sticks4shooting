@@ -12,17 +12,8 @@ public abstract class Weapon : MonoBehaviour {
 	protected int damagePerProjectile;
 	protected int maxClipSize;
 	protected int reloadSpeed;
-	protected int fireRate;
+	protected float fireRate;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	// implement in children
 	// Information provided by player:
@@ -46,7 +37,7 @@ public abstract class Weapon : MonoBehaviour {
 		return reloadSpeed;
 	}
 
-	public int getFireRate(){
+	public float getFireRate(){
 		return fireRate;
 	}
 }
