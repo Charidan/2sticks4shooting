@@ -18,8 +18,7 @@ public class BasicBullet : Projectile {
 		// Projectile traits
 		//set damage value
 		damage = 5;
-		Player myPlayer = GameObject.Find ("Player1").GetComponent<Player>();
-		setOwner (ref myPlayer);
+		owner = GameObject.Find ("Player1").GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
