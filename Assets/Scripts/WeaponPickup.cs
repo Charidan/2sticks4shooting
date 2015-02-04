@@ -3,8 +3,9 @@ using System.Collections;
 
 public class WeaponPickup : MonoBehaviour {
 
-	// Index of weapon type available on pickup
-	int Weapon;
+	// weapon type available on pickup
+	// corresponds to array index in WeaponManager
+	int weapon_type;
 
 	// Use this for initialization
 	void Start () {

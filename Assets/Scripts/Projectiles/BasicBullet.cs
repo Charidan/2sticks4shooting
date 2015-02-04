@@ -23,9 +23,11 @@ public class BasicBullet : Projectile {
 	
 	// Update is called once per frame
 	void Update () {
+		// moves projectile towards cursor coordinates
 		transform.position = Vector3.MoveTowards (transform.position, _destination, Time.deltaTime * _speed);
 
 		float distanceSquared = (_destination - transform.position).sqrMagnitude;
+		// destroys projectile when it reaches the cursor's coordinates
 		if (distanceSquared > (.01f * .01f))
 						return;
 		Destroy (gameObject);

@@ -26,6 +26,10 @@ public class BasicWeapon : Weapon {
 	}
 
 	override public void Fire (ref Player owner){
+		/*
+		 * The Fire() function should be called from player on a key or mouse pressed
+		 * The Fire() function should only need to check if the gun can fire then spawn projectiles
+		 */
 		//spawn bullet on leftclick
 		if (Input.GetMouseButtonDown(0)) {
 			//create an instance of the bullet
