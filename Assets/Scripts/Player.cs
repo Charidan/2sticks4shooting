@@ -15,11 +15,18 @@ public class Player : MonoBehaviour {
 	protected Weapon[] held_weapons;
 	public Vector2 speed;
 	public Vector2 movement;
-	
+
+	protected HealthBar hit_points;
+
 	// Use this for initialization
 	void Start () {
 		max_hp = 10000;
 		curr_hp = 10000;
+
+		// creates an instance of HealthBar for the specific player
+		hit_points = (HealthBar) Instantiate(Resources.Load<HealthBar>("Prefabs/HealthBar"));
+		hit_points.Initialize (this.name);
+
 		// should be changed when player has weapons to start with instead of initializing all fields to zero
 		curr_ammo = curr_ammo_weapon0 = curr_ammo_weapon1 = 0;
 		// Weapon array initialization should become an initializer list in place of the current building process
