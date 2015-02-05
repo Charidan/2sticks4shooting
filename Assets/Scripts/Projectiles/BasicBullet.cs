@@ -4,7 +4,7 @@ using System.Collections;
 public class BasicBullet : Projectile {
 
 	private Vector3 _destination;
-	private float _speed = (float)1.5;
+	private float _speed = 1.5f;
 
 	public void Initialize(Vector3 destination, float speed){
 		_destination = destination;
@@ -28,7 +28,7 @@ public class BasicBullet : Projectile {
 
 		float distanceSquared = (_destination - transform.position).sqrMagnitude;
 		// destroys projectile when it reaches the cursor's coordinates
-		if (distanceSquared > (.01f * .01f))
+		if (distanceSquared > (0.01f * 0.01f))
 						return;
 		Destroy (gameObject);
 	}

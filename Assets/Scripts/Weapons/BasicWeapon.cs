@@ -7,11 +7,14 @@ public class BasicWeapon : Weapon {
 	public BasicBullet projectile;
 	public float speed;
 	private float _nextShotInSeconds;
+	private string name;
+
 	// Use this for initialization
 	void Start () {
 		//_nextShotInSeconds = 0;
-		speed = (float)8.0;
-		fireRate = (float).25;
+		speed = 8.0f;
+		fireRate = 0.25f;
+		name = "BasicWeapon";
 	}
 	
 	// Update is called once per frame

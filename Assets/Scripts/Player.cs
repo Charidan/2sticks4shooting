@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	protected int curr_ammo_weapon0;
 	protected int curr_ammo_weapon1;
 	// fields of type "Weapon" are pointers to instances of Weapons inside class WeaponManager
+	protected WeaponManager weapon_manager;
 	protected Weapon curr_weapon;
 	protected Weapon[] held_weapons;
 	public Vector2 speed;
@@ -22,11 +23,15 @@ public class Player : MonoBehaviour {
 		// should be changed when player has weapons to start with instead of initializing all fields to zero
 		curr_ammo = curr_ammo_weapon0 = curr_ammo_weapon1 = 0;
 		// Weapon array initialization should become an initializer list in place of the current building process
-		held_weapons = new Weapon [2];
-		curr_weapon = held_weapons [0] = null;
-		held_weapons [1] = null;
+		held_weapons = new Weapon[2];
+		curr_weapon = held_weapons[0] = held_weapons[1] = null;
 		speed = new Vector2 (10, 10);
 		Debug.Log("Created new player");
+
+		// TEST
+		Weapon[] w = weapon_manager.weapon_list;
+		//if (curr_weapon.name == null) Debug.Log ("dick");
+		//Debug.Log(curr_weapon.name);
 	}
 	
 	// Update is called once per frame
@@ -58,6 +63,10 @@ public class Player : MonoBehaviour {
 	void FixedUpdate() {
 		rigidbody2D.velocity = movement;
 		rotatePlayer();
+	}
+
+	void OnGUI() {
+		//GUI.TextArea(new Rect(10, 10, 20, 20), curr_weapon.name);
 	}
 	
 	// Adjust hp based on integer value
