@@ -35,8 +35,6 @@ public class Player : MonoBehaviour {
 		speed = new Vector2 (10, 10);
 		Debug.Log("Created new player");
 
-		// TEST
-		Weapon[] w = weapon_manager.weapon_list;
 		//if (curr_weapon.name == null) Debug.Log ("dick");
 		//Debug.Log(curr_weapon.name);
 	}
