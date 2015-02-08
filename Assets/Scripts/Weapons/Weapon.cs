@@ -12,6 +12,9 @@ public abstract class Weapon : MonoBehaviour {
 	protected int damagePerProjectile;
 	protected int maxClipSize;
 	protected int reloadSpeed;
+	// type corresponds to the weapon's index in the WeaponManager List
+	// type also corresponds to the integer stored in the WeaponPickup
+	protected int weapon_type;
 	protected float fireRate;
 
 
@@ -31,6 +34,12 @@ public abstract class Weapon : MonoBehaviour {
 	// accessors
 	public int getDamage(){
 		return damagePerProjectile;
+	}
+
+	// type corresponds to the weapon's index in the WeaponManager List
+	// type also corresponds to the integer stored in the WeaponPickup
+	public int getWeaponType(){
+		return weapon_type;
 	}
 
 	public int getClipSize(){

@@ -5,7 +5,7 @@ public class WeaponManager : MonoBehaviour {
 
 	/*
 	 * Weapon List index organization:
-	 * 0 - BasicWeapon
+	 * 0 - Mortar
 	 * 1 - Sin-Wave Gun
 	 * 2 - Reverse Shotgun
 	 * ...
