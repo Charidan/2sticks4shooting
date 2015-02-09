@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
 	public Vector2 movement;
 
 	protected HealthBar hit_points;
+	protected Reticule gun_cursor; 
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +34,11 @@ public class Player : MonoBehaviour {
 		held_weapons = new Weapon[2];
 		curr_weapon = held_weapons[0] = held_weapons[1] = null;
 		speed = new Vector2 (10, 10);
+
+		// creates an instance of Reticule for the specific player
+		gun_cursor = (Reticule) Instantiate(Resources.Load<Reticule>("Prefabs/Reticule"));
+		gun_cursor.Initialize (this.name);
+
 		Debug.Log("Created new player");
 
 		//if (curr_weapon.name == null) Debug.Log ("dick");
