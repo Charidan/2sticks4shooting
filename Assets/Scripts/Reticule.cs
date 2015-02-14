@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class Reticule : MonoBehaviour {
-
-	private int sprite_index;
+	
 	// corresponds to the weapon index in WeaponManager and the int in WeaponPickup
+	// weapon type corresponds the the first index of all_reticules[][]
 	private int weapon_type;
 	private Sprite[][] all_reticules;
+	// curr_ammo corresponds to the second index of all_reticules[][]
 	private int curr_ammo;
 	private Player owner; 
 
@@ -17,8 +18,7 @@ public class Reticule : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-	}
+	void Start () {}
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,6 +35,11 @@ public class Reticule : MonoBehaviour {
 		owner = GameObject.Find (owner_name).GetComponent<Player>();
 		// assumes the player has a weapon (currently throws an exception due to player not having a weapon)
 		weapon_type = owner.getCurrWeapon ().getWeaponType();
-		sprite_index = curr_ammo = owner.getAmmo();
+		curr_ammo = owner.getAmmo();
+	}
+
+	// Call this only when the player switches weapons 
+	public void setReticule(int new_weapon_type){
+		weapon_type = new_weapon_type;
 	}
 }

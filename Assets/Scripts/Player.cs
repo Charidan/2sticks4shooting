@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	
+
+	// used for determining the number of players
+	public static int num_players = 0;
+
 	// Initialize player attributes
 	protected int max_hp;
 	protected int curr_hp;
@@ -23,6 +26,8 @@ public class Player : MonoBehaviour {
 	void Start () {
 		max_hp = 10000;
 		curr_hp = 10000;
+
+		num_players++; 
 
 		// creates an instance of HealthBar for the specific player
 		hit_points = (HealthBar) Instantiate(Resources.Load<HealthBar>("Prefabs/HealthBar"));

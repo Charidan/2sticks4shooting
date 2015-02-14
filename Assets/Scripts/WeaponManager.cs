@@ -10,7 +10,7 @@ public class WeaponManager : MonoBehaviour {
 	 * 2 - Reverse Shotgun
 	 * ...
 	 */
-	public Weapon[] weapon_list; 
+	public static Weapon[] weapon_list; 
 
 	// Use this for initialization
 	void Start () {
