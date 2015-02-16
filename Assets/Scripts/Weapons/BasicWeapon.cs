@@ -9,13 +9,15 @@ public class BasicWeapon : Weapon {
 	private float _nextShotInSeconds;
 	private string name;
 
-	// Use this for initialization
-	void Start () {
+	void Awake() {
 		//_nextShotInSeconds = 0;
 		speed = 8.0f;
 		fireRate = 0.25f;
 		name = "BasicWeapon";
 	}
+
+	// Use this for initialization
+	void Start () {}
 	
 	// Update is called once per frame
 	void Update () {
