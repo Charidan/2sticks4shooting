@@ -35,10 +35,7 @@ public class Player : MonoBehaviour {
 
 		// should be changed when player has weapons to start with instead of initializing all fields to zero
 		curr_ammo = curr_ammo_weapon0 = curr_ammo_weapon1 = 0;
-
-		// Create instance of WeaponManager
-		weapon_manager = gameObject.AddComponent("WeaponManager") as WeaponManager;
-
+		
 		// Weapon array initialization should become an initializer list in place of the current building process
 		held_weapons = new Weapon[2];
 		curr_weapon = held_weapons[0] = held_weapons[1] = null;

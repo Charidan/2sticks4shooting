@@ -39,7 +39,13 @@ public class Reticule : MonoBehaviour {
 	}
 
 	// Call this only when the player switches weapons 
-	public void setReticule(int new_weapon_type){
+	public void setReticule(int new_weapon_type, int new_ammo_count){
 		weapon_type = new_weapon_type;
+		curr_ammo = new_ammo_count;
+	}
+
+	// call this when the player's ammo count is changed
+	public void setAmmoCount(int new_ammo_count){
+		curr_ammo = new_ammo_count;
 	}
 }

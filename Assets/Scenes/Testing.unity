@@ -268,11 +268,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 219692116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f61acb14d7ec4714f8f5f6d55db7d1ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e494341743c9f84dbc14f696622c4e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
-  projectile: {fileID: 11439734, guid: 99cec5e4527e11b47b154820a7e27d19, type: 2}
+  projectile: {fileID: 0}
   speed: 0
 --- !u!1 &418555522
 GameObject:

@@ -24,12 +24,11 @@ public abstract class Weapon : MonoBehaviour {
 	* 		Any modifiers associated with using the weapon
 	*
 	* The Fire() function should be called from player on a key or mouse pressed
-	* The Fire() function should only need to check if the gun can fire then spawn projectiles
 	*/
-	public abstract void Fire (ref Player owner);
+	public abstract void Fire (Player owner);
 
 	// included for later
-	public abstract void altFire (ref Player owner);
+	public abstract void altFire (Player owner);
 
 	// accessors
 	public int getDamage(){
