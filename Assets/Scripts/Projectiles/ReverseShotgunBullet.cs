@@ -1,38 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BasicBullet : Projectile {
+public class ReverseShotgunBullet : Projectile {
 
 	private Vector3 _destination;
 	private float _speed;
-
-	public void Initialize(Vector3 destination, float speed){
+	private Vector3 _charposition;
+	
+	public void Initialize(Vector3 destination, float speed, int spread){
 		_destination = destination;
 		_speed = speed;
+		//shift the bullet over horizontally based on which bullet it is in the spread
+		transform.Translate (Vector2.right * spread);
+		float arcTan = Mathf.Atan2(_destination.y - transform.position.y, _destination.x - transform.position.x) * Mathf.Rad2Deg - 90;
+		transform.rotation = Quaternion.Euler(0, 0, arcTan);
 	}
 	// Use this for initialization
 	void Start () {
-		//Vector3 mouseScreen = Input.mousePosition;
-		//Vector3 mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
-		//_destination = mouse;
-		// Projectile traits
-		//set damage value
 		damage = 5;
-		owner = GameObject.Find ("Player1").GetComponent<Player>();
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 		//if (coll.gameObject.tag == "Enemy")
-			//coll.gameObject.SendMessage("ApplyDamage", 10);
-			Destroy (gameObject);
+		//coll.gameObject.SendMessage("ApplyDamage", 10);
+		Destroy (gameObject);
 	}
 	// Update is called once per frame
 	void Update () {
-		// moves projectile towards cursor coordinates
-		//transform.position = Vector3.MoveTowards (transform.position, _destination, Time.deltaTime * _speed);
-		//rigidbody2D.velocity = transform.TransformDirection(new Vector3(0,0, _speed));
 		rigidbody2D.velocity = transform.up*_speed;
-
-		//distance between bullet and destination
+		//destroy it once it reaches the destination
 		Vector3 distance = transform.position - _destination;
 		Vector2 posOnScreen = Camera.main.WorldToScreenPoint (transform.position);
 		//destroy bullet if it reaches destinatio
@@ -40,8 +35,8 @@ public class BasicBullet : Projectile {
 			Destroy (gameObject);
 		//destroy bullet if it goes off screen
 		else if(posOnScreen.y > Screen.height || posOnScreen.y < 0 ||
-		        posOnScreen.x > Screen.width || posOnScreen.x < 0)
+		   posOnScreen.x > Screen.width || posOnScreen.x < 0)
 			Destroy (gameObject);
-
 	}
+
 }

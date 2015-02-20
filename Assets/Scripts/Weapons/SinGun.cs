@@ -42,7 +42,7 @@ public class SinGun : Weapon {
 			SinBullet proj = (SinBullet)Instantiate (projectile, transform.position, transform.rotation);
 			Vector3 mouseLocation = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			//initialize target point & speed for bullet
-			//proj.Initialize (mouseLocation, speed);
+			proj.Initialize (mouseLocation, speed);
 		}
 	}
 	

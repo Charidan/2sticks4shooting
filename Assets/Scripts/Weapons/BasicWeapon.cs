@@ -8,7 +8,7 @@ public class BasicWeapon : Weapon {
 	public float speed;
 	private float _nextShotInSeconds;
 	private string name;
-
+	Player myPlayer;
 	void Awake() {
 		//_nextShotInSeconds = 0;
 		speed = 8.0f;
@@ -17,7 +17,9 @@ public class BasicWeapon : Weapon {
 	}
 
 	// Use this for initialization
-	void Start () {}
+	void Start () {
+		myPlayer = gameObject.GetComponent<Player>();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -26,7 +28,6 @@ public class BasicWeapon : Weapon {
 	void FixedUpdate() {
 		//_nextShotInSeconds = fireRate;
 		//shoot bullet
-		Player myPlayer = gameObject.GetComponent<Player>();
 		Fire (ref myPlayer);
 	}
 
