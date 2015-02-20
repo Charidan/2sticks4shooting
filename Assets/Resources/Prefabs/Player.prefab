@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5024128}
   - 114: {fileID: 11430452}
   - 114: {fileID: 11473256}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -79,13 +79,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 124128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c7160d034f6124aba971e7cd8b38e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e494341743c9f84dbc14f696622c4e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
-  projectile: {fileID: 11414316, guid: 366cfda0ae7562f4dac42545c26d74c2, type: 2}
+  projectile: {fileID: 0}
   speed: 0
-  fireRate: 0
 --- !u!212 &21224128
 SpriteRenderer:
   m_ObjectHideFlags: 1
