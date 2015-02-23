@@ -176,6 +176,7 @@ GameObject:
   - 61: {fileID: 219692120}
   - 50: {fileID: 219692119}
   - 114: {fileID: 219692118}
+  - 114: {fileID: 219692122}
   m_Layer: 8
   m_Name: Player1
   m_TagString: Player
@@ -260,6 +261,17 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3373d3461fe874de0870a6e41f5188ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &219692122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 219692116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7764b3cdc73824262aa43638200b8b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &418555522
 GameObject:
   m_ObjectHideFlags: 0

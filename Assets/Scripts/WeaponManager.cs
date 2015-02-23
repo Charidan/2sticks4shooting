@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WeaponManager : MonoBehaviour {
+public class WeaponManager: MonoBehaviour {
 
 	/*
 	 * Weapon List index organization:
@@ -10,17 +10,12 @@ public class WeaponManager : MonoBehaviour {
 	 * 2 - Reverse Shotgun
 	 * ...
 	 */
-	public Weapon[] weapon_list;
-
-	void Awake() {
+	Weapon[] weapon_list; 
+	void Start() {
 		// Create instances of each weapon within the weapon list here
-		weapon_list = new Weapon[2];
-		//weapon_list[0] = gameObject.AddComponent("BasicWeapon") as BasicWeapon;
+		weapon_list = new Weapon[3];
+		weapon_list [0] = (BasicWeapon)gameObject.AddComponent ("BasicWeapon");
+		weapon_list [1] = (SinGun)gameObject.AddComponent ("SinGun");
+		weapon_list [2] = (ReverseShotgun)gameObject.AddComponent ("ReverseShotgun");
 	}
-
-	// Use this for initialization
-	void Start () {}
-	
-	// Update is called once per frame
-	void Update () {}
 }

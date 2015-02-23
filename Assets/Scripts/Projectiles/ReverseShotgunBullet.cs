@@ -17,7 +17,7 @@ public class ReverseShotgunBullet : Projectile {
 	}
 	// Use this for initialization
 	void Start () {
-		damage = 5;
+		damage = 400;
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 		//if (coll.gameObject.tag == "Enemy")

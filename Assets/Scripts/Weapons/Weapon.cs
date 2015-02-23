@@ -6,7 +6,7 @@ using System.Collections;
  * Need to implement Start() and Fire() in children
  */
 
-public abstract class Weapon : MonoBehaviour {
+public abstract class Weapon: MonoBehaviour {
 	// Weapon Traits
 	// implement in children
 	protected int damagePerProjectile;
@@ -15,7 +15,7 @@ public abstract class Weapon : MonoBehaviour {
 	// type corresponds to the weapon's index in the WeaponManager List
 	// type also corresponds to the integer stored in the WeaponPickup
 	protected int weapon_type;
-	protected float fireRate;
+	protected int fireRate;
 
 
 	/* implement in children
@@ -49,7 +49,7 @@ public abstract class Weapon : MonoBehaviour {
 		return reloadSpeed;
 	}
 
-	public float getFireRate(){
+	public int getFireRate(){
 		return fireRate;
 	}
 }

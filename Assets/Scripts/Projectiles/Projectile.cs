@@ -14,7 +14,7 @@ public abstract class Projectile : MonoBehaviour {
 	
 	// set functions
 
-	public void setOwner (ref Player newOwner){
+	public void setOwner (Player newOwner){
 		owner = newOwner;
 	}
 }

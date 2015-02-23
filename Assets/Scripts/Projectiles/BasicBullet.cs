@@ -17,8 +17,7 @@ public class BasicBullet : Projectile {
 		//_destination = mouse;
 		// Projectile traits
 		//set damage value
-		damage = 5;
-		owner = GameObject.Find ("Player1").GetComponent<Player>();
+		damage = 2500;
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 		//if (coll.gameObject.tag == "Enemy")

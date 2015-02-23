@@ -58,9 +58,9 @@ public class Player : MonoBehaviour {
 		movement = new Vector2(speed.x * inputX, speed.y * inputY);
 		
 		// Allows only partial health regeneration up to the nearest 10
-		// Lets current return to 100 from a value between 99 and 100
-		if(Mathf.RoundToInt(curr_hp) == 10000)
-			curr_hp = 10000;
+		// Lets current return to 10000
+		if(Mathf.RoundToInt(curr_hp) == max_hp)
+			curr_hp = max_hp;
 		else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
 			adj_hp (5);
 		
@@ -69,8 +69,6 @@ public class Player : MonoBehaviour {
 			Debug.Log("Ouch, my hp is going down :(" + curr_hp + ")");
 			adj_hp (-500);
 		}
-		// Test hp
-		//if (Input.GetKeyUp (KeyCode.Space)) adj_hp(-250);
 	}
 	
 	// Use for updates in the players physical movements
@@ -79,10 +77,6 @@ public class Player : MonoBehaviour {
 		rotatePlayer();
 	}
 
-	void OnGUI() {
-		//GUI.TextArea(new Rect(10, 10, 20, 20), curr_weapon.name);
-	}
-	
 	// Adjust hp based on integer value
 	void adj_hp(int adj) {
 		curr_hp += adj;
