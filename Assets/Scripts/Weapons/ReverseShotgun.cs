@@ -43,5 +43,4 @@ public class ReverseShotgun : Weapon {
 	override public void altFire (Player owner){
 		
 	}
-
 }

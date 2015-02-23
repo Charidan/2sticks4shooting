@@ -10,7 +10,7 @@ public class WeaponManager: MonoBehaviour {
 	 * 2 - Reverse Shotgun
 	 * ...
 	 */
-	Weapon[] weapon_list; 
+	public Weapon[] weapon_list; 
 	void Start() {
 		// Create instances of each weapon within the weapon list here
 		weapon_list = new Weapon[3];

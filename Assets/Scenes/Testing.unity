@@ -175,8 +175,8 @@ GameObject:
   - 212: {fileID: 219692121}
   - 61: {fileID: 219692120}
   - 50: {fileID: 219692119}
-  - 114: {fileID: 219692118}
   - 114: {fileID: 219692122}
+  - 114: {fileID: 219692118}
   m_Layer: 8
   m_Name: Player1
   m_TagString: Player
@@ -208,6 +208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364bfd2e34caa034aab1f53a6fe5b0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curr_ammo: 0
+  curr_ammo_weapon0: 0
+  curr_ammo_weapon1: 0
+  curr_weapon: {fileID: 0}
+  held_weapons: []
   speed: {x: 0, y: 0}
   movement: {x: 0, y: 0}
 --- !u!50 &219692119
@@ -272,6 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7764b3cdc73824262aa43638200b8b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon_list: []
 --- !u!1 &418555522
 GameObject:
   m_ObjectHideFlags: 0

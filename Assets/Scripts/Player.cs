@@ -7,15 +7,15 @@ public class Player : MonoBehaviour {
 	public static int num_players = 0;
 
 	// Initialize player attributes
+	private bool weapon_initialize;
 	protected int max_hp;
 	protected int curr_hp;
-	protected int curr_ammo;
-	protected int curr_ammo_weapon0;
-	protected int curr_ammo_weapon1;
+	public int curr_ammo;
+	public int curr_ammo_weapon0;
+	public int curr_ammo_weapon1;
 	// fields of type "Weapon" are pointers to instances of Weapons inside class WeaponManager
-	protected WeaponManager weapon_manager;
-	protected Weapon curr_weapon;
-	protected Weapon[] held_weapons;
+	public Weapon curr_weapon;
+	public Weapon[] held_weapons;
 	public Vector2 speed;
 	public Vector2 movement;
 
@@ -33,12 +33,8 @@ public class Player : MonoBehaviour {
 		hit_points = (HealthBar) Instantiate(Resources.Load<HealthBar>("Prefabs/HealthBar"));
 		hit_points.Initialize (this.name);
 
-		// should be changed when player has weapons to start with instead of initializing all fields to zero
-		curr_ammo = curr_ammo_weapon0 = curr_ammo_weapon1 = 0;
-		
-		// Weapon array initialization should become an initializer list in place of the current building process
-		held_weapons = new Weapon[2];
-		curr_weapon = held_weapons[0] = held_weapons[1] = null;
+		weapon_initialize = false; 
+
 		speed = new Vector2 (10, 10);
 
 		// creates an instance of Reticule for the specific player
@@ -50,6 +46,10 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (!weapon_initialize) {
+			InitializeWeapons ();
+			weapon_initialize = !weapon_initialize;
+		}
 		// Detect keys
 		float inputX = Input.GetAxis("Horizontal");
 		float inputY = Input.GetAxis("Vertical");
@@ -118,7 +118,24 @@ public class Player : MonoBehaviour {
 		rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
 		//Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 	}
-	
+
+	// must be called once in Update() to allow for the weapons to correctly give the following attributes their correct values:
+	// curr_ammo
+	// curr_ammo_weapon0
+	// curr_ammo_weapon1
+	private void InitializeWeapons(){
+		// Initialize player's invetory to guns in weapon manager
+		WeaponManager tmp_mgr = GetComponent <WeaponManager>();
+		held_weapons = new Weapon[2];
+		// gives the player a Mortar and Reverse Shotgun in their inventory
+		curr_weapon = held_weapons [0] = tmp_mgr.weapon_list[0];
+		held_weapons [1] = tmp_mgr.weapon_list [2];
+		
+		// initialize the current ammo for each weapon to the correct value
+		curr_ammo = curr_ammo_weapon0 = held_weapons [0].getClipSize ();
+		curr_ammo_weapon1 = held_weapons [1].getClipSize ();
+	}
+
 	// accessor functions
 	public int getHP(){
 		return curr_hp;

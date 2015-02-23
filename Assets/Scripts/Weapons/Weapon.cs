@@ -17,6 +17,9 @@ public abstract class Weapon: MonoBehaviour {
 	protected int weapon_type;
 	protected int fireRate;
 
+	void Start(){
+
+	}
 
 	/* implement in children
 	* Information provided by player:

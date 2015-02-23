@@ -41,5 +41,4 @@ public class BasicWeapon : Weapon {
 	override public void altFire (Player owner){
 
 	}
-	
 }
