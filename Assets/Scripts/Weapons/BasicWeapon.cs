@@ -20,9 +20,9 @@ public class BasicWeapon : Weapon {
 		damagePerProjectile = 2500;
 		weapon_type = 0;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	// FixedUpdate used for consistency
+	void FixedUpdate () {
 		if (curr_reload != reloadSpeed) {curr_reload++;}
 	}
 

@@ -21,8 +21,8 @@ public class ReverseShotgun : Weapon {
 		weapon_type = 2;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	// FixedUpdate used for consistency
+	void FixedUpdate () {
 		if (curr_reload != reloadSpeed) {curr_reload++;}
 		if (curr_ROF != fireRate) {curr_ROF++;}
 	}

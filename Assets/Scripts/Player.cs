@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 
 	// Initialize player attributes
 	private bool weapon_initialize;
+	// used for tracking the reloading state of the current weapon
+	private bool reloading;
 	protected int max_hp;
 	protected int curr_hp;
 	public int curr_ammo;
@@ -66,13 +68,16 @@ public class Player : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.R)){
 			curr_weapon.reload();
+			reloading = true; 
 		}
 
-		/*if(curr_weapon.getReload() == curr_weapon.getReloadSpeed()){
+		// checks to see if reload is complete and refills ammo if this is the case
+		if (reloading && curr_weapon.getReloadSpeed () == curr_weapon.getReload ()) {
+			reloading = false;
 			curr_ammo = curr_weapon.getClipSize();
 			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0 = curr_ammo;}
 			else{curr_ammo_weapon1 = curr_ammo;}
-		}*/
+		}
 
 		// decrease ammo for each weapon properly
 		if (Input.GetMouseButtonDown (0) && curr_ammo != 0) {
@@ -82,8 +87,8 @@ public class Player : MonoBehaviour {
 			else{curr_ammo_weapon1--;}
 		}
 
-		// Q key allows the player to switch weapons
-		if (Input.GetKeyDown (KeyCode.Q)) {
+		// Q key allows the player to switch weapons only if they aren't reloading
+		if (Input.GetKeyDown (KeyCode.Q) && !reloading) {
 			if(curr_weapon == held_weapons[0]){
 				curr_weapon = held_weapons[1];
 				curr_ammo = curr_ammo_weapon1;
@@ -163,6 +168,8 @@ public class Player : MonoBehaviour {
 		// initialize the current ammo for each weapon to the correct value
 		curr_ammo = curr_ammo_weapon0 = held_weapons [0].getClipSize ();
 		curr_ammo_weapon1 = held_weapons [1].getClipSize ();
+
+		reloading = false;
 	}
 
 	// accessor functions

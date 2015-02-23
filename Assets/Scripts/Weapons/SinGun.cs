@@ -22,7 +22,8 @@ public class SinGun : Weapon {
 		weapon_type = 1;
 	}
 
-	void Update (){
+	// FixedUpdate used for consistency
+	void FixedUpdate () {
 		if (curr_reload != reloadSpeed) {curr_reload++;}
 		if (curr_ROF != fireRate) {curr_ROF++;}
 	}
