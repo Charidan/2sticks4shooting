@@ -12,10 +12,12 @@ public abstract class Weapon: MonoBehaviour {
 	protected int damagePerProjectile;
 	protected int maxClipSize;
 	protected int reloadSpeed;
+	protected int curr_reload;
 	// type corresponds to the weapon's index in the WeaponManager List
 	// type also corresponds to the integer stored in the WeaponPickup
 	protected int weapon_type;
 	protected int fireRate;
+	protected int curr_ROF;
 
 	void Start(){
 
@@ -27,6 +29,8 @@ public abstract class Weapon: MonoBehaviour {
 	* 		Any modifiers associated with using the weapon
 	*
 	* The Fire() function should be called from player on a key or mouse pressed
+	* The Player should check if it has enough ammo to fire
+	* Fire() should check if the gun is reloading or on cooldown from the Rate of Fire variable
 	*/
 	public abstract void Fire (Player owner);
 

@@ -63,6 +63,17 @@ public class Player : MonoBehaviour {
 			curr_hp = max_hp;
 		else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
 			adj_hp (5);
+
+		// Q key allows the player to switch weapons
+		if (Input.GetKeyDown (KeyCode.Q)) {
+			if(curr_weapon == held_weapons[0]){
+				curr_weapon = held_weapons[1];
+				curr_ammo = curr_ammo_weapon1;
+			}else{
+				curr_weapon = held_weapons[0];
+				curr_ammo = curr_ammo_weapon0;
+			}
+		}
 		
 		// Test hp (-5 on space press, +0.05 per update cycle)
 		if (Input.GetKeyDown(KeyCode.Space)) {

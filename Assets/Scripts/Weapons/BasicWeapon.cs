@@ -13,21 +13,28 @@ public class BasicWeapon : Weapon {
 		weapon_type = 0;
 		maxClipSize = 1;
 		reloadSpeed = 60;
+		curr_reload = 60;
 		// the cap to the mortar is the reload speed, not the fire rate
 		fireRate = 0;
+		curr_ROF = 0; 
 		damagePerProjectile = 2500;
 		weapon_type = 0;
 	}
 	
 	// Update is called once per frame
-	void Update () {}
+	void Update () {
+		if (curr_reload != reloadSpeed) {curr_reload++;}
+	}
 
 	/*
 	* The Fire() function should be called from player on a key or mouse pressed
+	* The Player should check if it has enough ammo to fire
+	* Fire() should check if the gun is reloading or on cooldown from the Rate of Fire variable
 	*/
 	override public void Fire (Player owner){
-		//spawn bullet on leftclick
-		if (Input.GetMouseButtonDown(0)) {
+		// make bullet only when the gun isn't reloading or already fired
+		if (curr_reload == reloadSpeed && fireRate == curr_ROF) {
+			curr_reload = 0; 
 			//create an instance of the bullet
 			BasicBullet proj = (BasicBullet)Instantiate (Resources.Load<BasicBullet>("Prefabs/Bullet"), transform.position, transform.rotation);
 			proj.setOwner(owner);
