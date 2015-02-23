@@ -34,7 +34,6 @@ public class BasicWeapon : Weapon {
 	override public void Fire (Player owner){
 		// make bullet only when the gun isn't reloading or already fired
 		if (curr_reload == reloadSpeed && fireRate == curr_ROF) {
-			curr_reload = 0; 
 			//create an instance of the bullet
 			BasicBullet proj = (BasicBullet)Instantiate (Resources.Load<BasicBullet>("Prefabs/Bullet"), transform.position, transform.rotation);
 			proj.setOwner(owner);

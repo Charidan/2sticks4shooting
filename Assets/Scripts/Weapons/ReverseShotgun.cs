@@ -35,7 +35,7 @@ public class ReverseShotgun : Weapon {
 	override public void Fire (Player owner){
 		// make bullet only when the gun isn't reloading or already fired
 		if (curr_reload == reloadSpeed && fireRate == curr_ROF) {
-			curr_ROF = curr_reload = 0;
+			curr_ROF = 0;
 			//create an instance of the bullet
 			for(int i = -2; i < 3; i++){
 				ReverseShotgunBullet proj = (ReverseShotgunBullet)Instantiate (Resources.Load<ReverseShotgunBullet>("Prefabs/ReverseShotgunBullet"), transform.position, transform.rotation);

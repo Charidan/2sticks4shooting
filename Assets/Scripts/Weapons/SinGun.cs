@@ -35,7 +35,7 @@ public class SinGun : Weapon {
 	override public void Fire (Player owner){
 		// make bullet only when the gun isn't reloading or already fired
 		if (curr_reload == reloadSpeed && fireRate == curr_ROF) {
-			curr_ROF = curr_reload = 0;
+			curr_ROF = 0;
 			//create an instance of the bullet
 			SinBullet proj = (SinBullet)Instantiate (Resources.Load<SinBullet>("Prefabs/SinBullet"), transform.position, transform.rotation);
 			proj.setOwner(owner);

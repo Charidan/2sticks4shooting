@@ -64,6 +64,24 @@ public class Player : MonoBehaviour {
 		else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
 			adj_hp (5);
 
+		if(Input.GetKeyDown(KeyCode.R)){
+			curr_weapon.reload();
+		}
+
+		/*if(curr_weapon.getReload() == curr_weapon.getReloadSpeed()){
+			curr_ammo = curr_weapon.getClipSize();
+			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0 = curr_ammo;}
+			else{curr_ammo_weapon1 = curr_ammo;}
+		}*/
+
+		// decrease ammo for each weapon properly
+		if (Input.GetMouseButtonDown (0) && curr_ammo != 0) {
+			curr_weapon.Fire(this);
+			curr_ammo--;
+			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0--;}
+			else{curr_ammo_weapon1--;}
+		}
+
 		// Q key allows the player to switch weapons
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			if(curr_weapon == held_weapons[0]){

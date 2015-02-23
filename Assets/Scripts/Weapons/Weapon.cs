@@ -37,6 +37,10 @@ public abstract class Weapon: MonoBehaviour {
 	// included for later
 	public abstract void altFire (Player owner);
 
+	public void reload(){
+		curr_reload = 0;
+	}
+
 	// accessors
 	public int getDamage(){
 		return damagePerProjectile;
@@ -54,6 +58,10 @@ public abstract class Weapon: MonoBehaviour {
 
 	public int getReloadSpeed(){
 		return reloadSpeed;
+	}
+
+	public int getReload(){
+		return curr_reload;
 	}
 
 	public int getFireRate(){
