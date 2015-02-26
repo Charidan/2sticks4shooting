@@ -6,6 +6,8 @@ public class BasicBullet : Projectile {
 	private Vector3 _destination;
 	private float _speed;
 
+
+
 	public void Initialize(Vector3 destination, float speed){
 		_destination = destination;
 		_speed = speed;
@@ -18,11 +20,16 @@ public class BasicBullet : Projectile {
 		// Projectile traits
 		//set damage value
 		damage = 2500;
+
+
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 		//if (coll.gameObject.tag == "Enemy")
 			//coll.gameObject.SendMessage("ApplyDamage", 10);
-			Destroy (gameObject);
+		if (coll.gameObject.tag == "Enemy") {
+			Destroy (coll.gameObject);
+		}
+		Destroy (gameObject);
 	}
 	// Update is called once per frame
 	void Update () {

@@ -42,4 +42,14 @@ public class Enemy : MonoBehaviour {
 			trans_y = 0.0f;
 		}
 	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+
+		if (col.gameObject.tag == "Player") {
+			Debug.Log ("Is touching player");
+		}
+
+	}
+
 }

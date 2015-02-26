@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//@script RequireComponent(AudioSource)
+
+using UnityEngine;
 using System.Collections;
 
 public class BasicWeapon : Weapon {
@@ -7,6 +9,8 @@ public class BasicWeapon : Weapon {
 	public BasicBullet projectile;
 	public float speed;
 
+	//public AudioClip bAudio;
+	
 	// Use this for initialization
 	void Start () {
 		speed = 8.0f;
@@ -32,10 +36,21 @@ public class BasicWeapon : Weapon {
 	* Fire() should check if the gun is reloading or on cooldown from the Rate of Fire variable
 	*/
 	override public void Fire (Player owner){
+		Vector3 mouseScreen = Input.mousePosition;
+		Vector3 mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
+		float arcTan = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90;
+
 		// make bullet only when the gun isn't reloading or already fired
 		if (curr_reload == reloadSpeed && fireRate == curr_ROF) {
 			//create an instance of the bullet
-			BasicBullet proj = (BasicBullet)Instantiate (Resources.Load<BasicBullet>("Prefabs/Bullet"), transform.position, transform.rotation);
+			//BasicBullet proj = (BasicBullet)Instantiate (Resources.Load<BasicBullet>("Prefabs/Bullet"), transform.position, transform.rotation);
+			BasicBullet proj = (BasicBullet)Instantiate (Resources.Load<BasicBullet>("Prefabs/Bullet"), transform.position, Quaternion.Euler(0, 0, arcTan));
+
+			//audio.PlayOneShot(bAudio);
+			audio.Play();
+
+			//Debug.Log("POW");
+
 			proj.setOwner(owner);
 			Vector3 mouseLocation = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			//initialize target point & speed for bullet

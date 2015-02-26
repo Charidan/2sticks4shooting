@@ -26,6 +26,15 @@ public class Player : MonoBehaviour {
 	protected HealthBar hit_points;
 	protected Reticule gun_cursor; 
 
+	public Sprite[] pSprites;
+	SpriteRenderer sr;
+
+	void Awake()
+	{
+		// load all frames in fruitsSprites array
+		pSprites = Resources.LoadAll<Sprite>("examplesheet");
+	}
+
 	// Use this for initialization
 	void Start () {
 		max_hp = 10000;
@@ -46,6 +55,8 @@ public class Player : MonoBehaviour {
 
 		// creates an instance of Reticule for the specific player
 		gun_cursor = (Reticule) Instantiate(Resources.Load<Reticule>("Prefabs/Reticule"));
+
+		GetComponent<SpriteRenderer> ().sprite = pSprites [1];
 
 		Debug.Log("Created new player");
 	}
@@ -136,29 +147,39 @@ public class Player : MonoBehaviour {
 		//convention is counterclockwise point is <equal, clockwise is just <
 		//face North
 		if (arcTan < 22.5 && arcTan >= -22.5)
-			arcTan = 0;
+			//arcTan = 0;
+			GetComponent<SpriteRenderer> ().sprite = pSprites [1];
 		//north-east
 		else if (arcTan < -22.5 && arcTan >= -67.5)
-			arcTan = -45;
+			//arcTan = -45;
+			GetComponent<SpriteRenderer> ().sprite = pSprites [2];
 		//east
 		else if (arcTan < -67.5 && arcTan >= -112.5)
-			arcTan = -90;
+			//arcTan = -90;
+			GetComponent<SpriteRenderer> ().sprite = pSprites [3];
 		//south-east
 		else if (arcTan < -112.5 && arcTan >= -157.5)
-			arcTan = -135;
+			//arcTan = -135;
+			GetComponent<SpriteRenderer> ().sprite = pSprites [4];
 		//south
 		else if (arcTan < -157.5 && arcTan >= -202.5)
-			arcTan = -180;
+			//arcTan = -180;
+			GetComponent<SpriteRenderer> ().sprite = pSprites [6];
 		//south-west
 		else if (arcTan < -202.5 && arcTan >= -247.5)
-			arcTan = -225;
+			//arcTan = -225;
+			GetComponent<SpriteRenderer> ().sprite = pSprites [7];
 		//west
 		else if ((arcTan >= -270 && arcTan < -247.5) || (arcTan <= 90 && arcTan >= 67.5))
-			arcTan = 90;
+			//arcTan = 90;
+			GetComponent<SpriteRenderer> ().sprite = pSprites [8];
 		//north-west
 		else if (arcTan < 67.5 && arcTan >= 22.5)
-			arcTan = 45;
-		rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
+			//arcTan = 45;
+			GetComponent<SpriteRenderer> ().sprite = pSprites [0];
+
+		//old code
+		//rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
 		//Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 	}
 

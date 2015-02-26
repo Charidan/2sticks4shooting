@@ -29,6 +29,9 @@ public class SinBullet : Projectile {
 	void OnCollisionEnter2D(Collision2D coll) {
 		//if (coll.gameObject.tag == "Enemy")
 		//coll.gameObject.SendMessage("ApplyDamage", 10);
+		if (coll.gameObject.tag == "Enemy") {
+			Destroy (coll.gameObject);
+		}
 		Destroy (gameObject);
 	}
 	void Update () {

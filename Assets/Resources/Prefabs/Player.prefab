@@ -31,7 +31,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!50 &5024128
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -69,8 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364bfd2e34caa034aab1f53a6fe5b0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curr_ammo_weapon1: 0
   speed: {x: 0, y: 0}
   movement: {x: 0, y: 0}
+  pSprites: []
 --- !u!114 &11473256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,8 +104,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 3373d3461fe874de0870a6e41f5188ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
