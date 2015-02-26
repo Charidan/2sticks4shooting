@@ -12,14 +12,16 @@ public class Player : MonoBehaviour {
 	private bool reloading;
 	protected int max_hp;
 	protected int curr_hp;
-	public int curr_ammo;
-	public int curr_ammo_weapon0;
+	protected int curr_ammo;
+	protected int curr_ammo_weapon0;
 	public int curr_ammo_weapon1;
 	// fields of type "Weapon" are pointers to instances of Weapons inside class WeaponManager
-	public Weapon curr_weapon;
-	public Weapon[] held_weapons;
+	protected Weapon curr_weapon;
+	protected Weapon[] held_weapons;
 	public Vector2 speed;
 	public Vector2 movement;
+
+	protected Color UI_color;
 
 	protected HealthBar hit_points;
 	protected Reticule gun_cursor; 
@@ -29,11 +31,14 @@ public class Player : MonoBehaviour {
 		max_hp = 10000;
 		curr_hp = 10000;
 
+		// should be edited after creation with the appropriate player HUD color
+		UI_color = new Color (0, 1, 1, 1);
+
 		num_players++; 
 
 		// creates an instance of HealthBar for the specific player
 		hit_points = (HealthBar) Instantiate(Resources.Load<HealthBar>("Prefabs/HealthBar"));
-		hit_points.Initialize (this.name);
+		hit_points.Initialize (this);
 
 		weapon_initialize = false; 
 
@@ -41,7 +46,6 @@ public class Player : MonoBehaviour {
 
 		// creates an instance of Reticule for the specific player
 		gun_cursor = (Reticule) Instantiate(Resources.Load<Reticule>("Prefabs/Reticule"));
-		gun_cursor.Initialize (this.name);
 
 		Debug.Log("Created new player");
 	}
@@ -58,14 +62,8 @@ public class Player : MonoBehaviour {
 		
 		// Calculate the movement vector
 		movement = new Vector2(speed.x * inputX, speed.y * inputY);
-		
-		// Allows only partial health regeneration up to the nearest 10
-		// Lets current return to 10000
-		if(Mathf.RoundToInt(curr_hp) == max_hp)
-			curr_hp = max_hp;
-		else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
-			adj_hp (5);
 
+		// Starts the reload process for the player
 		if(Input.GetKeyDown(KeyCode.R)){
 			curr_weapon.reload();
 			reloading = true; 
@@ -75,6 +73,7 @@ public class Player : MonoBehaviour {
 		if (reloading && curr_weapon.getReloadSpeed () == curr_weapon.getReload ()) {
 			reloading = false;
 			curr_ammo = curr_weapon.getClipSize();
+			gun_cursor.setAmmoCount(curr_ammo);
 			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0 = curr_ammo;}
 			else{curr_ammo_weapon1 = curr_ammo;}
 		}
@@ -83,6 +82,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0) && curr_ammo != 0) {
 			curr_weapon.Fire(this);
 			curr_ammo--;
+			gun_cursor.setAmmoCount(curr_ammo);
 			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0--;}
 			else{curr_ammo_weapon1--;}
 		}
@@ -92,9 +92,11 @@ public class Player : MonoBehaviour {
 			if(curr_weapon == held_weapons[0]){
 				curr_weapon = held_weapons[1];
 				curr_ammo = curr_ammo_weapon1;
+				gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
 			}else{
 				curr_weapon = held_weapons[0];
 				curr_ammo = curr_ammo_weapon0;
+				gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
 			}
 		}
 		
@@ -109,6 +111,13 @@ public class Player : MonoBehaviour {
 	void FixedUpdate() {
 		rigidbody2D.velocity = movement;
 		rotatePlayer();
+
+		//Allows only partial health regeneration up to the nearest 10
+		// Lets current return to 10000
+		if(Mathf.RoundToInt(curr_hp) == max_hp)
+			curr_hp = max_hp;
+		else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
+			adj_hp (5);
 	}
 
 	// Adjust hp based on integer value
@@ -170,9 +179,22 @@ public class Player : MonoBehaviour {
 		curr_ammo_weapon1 = held_weapons [1].getClipSize ();
 
 		reloading = false;
+
+		// must be initialized here to avoid incorrect passing of information
+		// if this call is in update the weapons aren't properly initialized yet
+		gun_cursor.Initialize (this);
+	}
+
+	// edit functions
+
+	// setUIColor should only be called immediately after construction 
+	// this function is only supposed to change the UI color (as its name implies)
+	public void setUIColor(Color player_UI_color){
+		UI_color = player_UI_color;
 	}
 
 	// accessor functions
+
 	public int getHP(){
 		return curr_hp;
 	}
@@ -180,7 +202,11 @@ public class Player : MonoBehaviour {
 	public int getMaxHP(){
 		return max_hp;
 	}
-	
+
+	public Color getUIColor(){
+		return UI_color;
+	}
+
 	public int getAmmo(){
 		return curr_ammo;
 	}

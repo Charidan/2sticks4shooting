@@ -40,6 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb0be4ac7c96514c950348429e31278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon_type: 0
+  curr_ammo: 0
   mouse: {x: 0, y: 0, z: 0}
 --- !u!212 &21242030
 SpriteRenderer:
@@ -62,7 +64,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: .83448267, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

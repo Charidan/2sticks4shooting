@@ -38,9 +38,10 @@ public class HealthBar : MonoBehaviour {
 	// Note: this function must be called immediately after a HealthBar is made, otherwise the instantiated HealthBar 
 	// will not be correct
 	// Allows the HealthBar to properly receive its owner instead of searching for the first player it sees
-	public void Initialize(string owner_name){
-		owner = GameObject.Find (owner_name).GetComponent<Player>();
+	public void Initialize(Player new_owner){
+		owner = new_owner;
 		playerHP = owner.getHP ();
+		GetComponent<SpriteRenderer> ().color = owner.getUIColor ();
 		healthSpriteIndex = Mathf.RoundToInt (playerHP / 10);
 		transform.position = owner.transform.position;
 	}

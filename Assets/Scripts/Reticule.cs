@@ -5,10 +5,10 @@ public class Reticule : MonoBehaviour {
 	
 	// corresponds to the weapon index in WeaponManager and the int in WeaponPickup
 	// weapon type corresponds the the first index of all_reticules[][]
-	private int weapon_type;
+	public int weapon_type;
 	private Sprite[][] all_reticules;
 	// curr_ammo corresponds to the second index of all_reticules[][]
-	private int curr_ammo;
+	public int curr_ammo;
 	private Player owner; 
 
 	public Vector3 mouse;
@@ -31,9 +31,9 @@ public class Reticule : MonoBehaviour {
 	// Must be called immediately after creating a Reticule, otherwise the reticule's owner and other attributes
 	// will be incorrect
 	// Allows the Reticule to properly receive its owner on creation
-	public void Initialize(string owner_name){
-		owner = GameObject.Find (owner_name).GetComponent<Player>();
-		// assumes the player has a weapon (currently throws an exception due to player not having a weapon)
+	public void Initialize(Player new_owner){
+		owner = new_owner;
+		GetComponent<SpriteRenderer> ().color = owner.getUIColor ();
 		weapon_type = owner.getCurrWeapon ().getWeaponType();
 		curr_ammo = owner.getAmmo();
 	}
