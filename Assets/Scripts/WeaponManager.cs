@@ -5,10 +5,10 @@ public class WeaponManager: MonoBehaviour {
 
 	/*
 	 * Weapon List index organization:
-	 * 0 - Mortar
+	 * 0 - Pistol 
 	 * 1 - Sin-Wave Gun
 	 * 2 - Reverse Shotgun
-	 * ...
+	 * 3 - Mortar
 	 */
 	public Weapon[] weapon_list; 
 	void Start() {
