@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class OverlayControl : MonoBehaviour {
 
 	protected Sprite[] overlay;
-	protected bool toggle;
+	protected bool toggleImage;
 
 	void Awake()
 	{
@@ -14,20 +15,18 @@ public class OverlayControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		toggle = false;
+		toggleImage = false;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		// toggles between the two overlays every frame
-		if (GetComponent<SpriteRenderer> () != null) {
-			if (toggle) {
-				GetComponent<SpriteRenderer> ().sprite = overlay [0];
-				toggle = !toggle;
-			} else {
-				GetComponent<SpriteRenderer> ().sprite = overlay [1];
-				toggle = !toggle;
-			}
+		if (toggleImage) {
+			GetComponent<Image> ().sprite = overlay[0];
+			toggleImage = !toggleImage;
+		} else {
+			GetComponent<Image> ().sprite = overlay[1];
+			toggleImage = !toggleImage;
 		}
 	}
 }
