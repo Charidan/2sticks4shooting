@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	// used for determining the number of players
-	public static int num_players = 0;
+	protected static int num_players = 0;
 
 	// Initialize player attributes
 	private bool weapon_initialize;
@@ -234,6 +234,10 @@ public class Player : MonoBehaviour {
 
 	public Weapon getCurrWeapon(){
 		return curr_weapon;
+	}
+
+	public static int getNumPlayers(){
+		return num_players;
 	}
 }
 
