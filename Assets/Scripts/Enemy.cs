@@ -3,44 +3,34 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-	public float trans_x = 0.0f;
-	public float trans_y = 0.0f;
-	public Vector2 speed = new Vector2(5.0f, 5.0f);
-	public Vector2 movement;
-	public Vector3 target_pos;
-	public Vector3 ai_pos;
+	protected Transform player;
+	protected float speed = 4.0f;
+	protected float max_distance = 10.0f;
+	protected float min_distance = 5.0f;
 
 	// Use this for initialization
-	void Start () {}
+	void Start () {
+		player = GameObject.FindGameObjectWithTag("Player").transform;
+	}
 	
 	// Update is called once per frame
-	void Update () {
-		get_direction();
-		movement = new Vector2(trans_x * speed.x, trans_y * speed.y);
-	}
+	void Update () {}
 
 	void FixedUpdate() {
-		rigidbody2D.velocity = movement;
+		move_towards_player();
 	}
 
-	// Probably not the best method for handling this
-	void get_direction() {
-		target_pos = GameObject.FindGameObjectWithTag("Player").transform.position;
-		ai_pos = transform.position;
-		if(target_pos.x > ai_pos.x) {
-			trans_x = 1.0f;
-		} else if(target_pos.x < ai_pos.x) {
-			trans_x = -1.0f;
-		} else {
-			trans_x = 0.0f;
+	void move_towards_player() {
+		Vector3 diff = (player.position - transform.position);
+		diff.Normalize();
+		float rotate_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+		if(Vector3.Distance(transform.position, player.position) <= min_distance) {
+			transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotate_z - 90.0f);
+			if(diff.x > 0) diff.x = 1.0f;
+			if(diff.y > 0) diff.y = 1.0f;
+			transform.position += diff * speed * Time.deltaTime;
 		}
-		if(target_pos.y > ai_pos.y) {
-			trans_y = 1.0f;
-		} else if(target_pos.y < ai_pos.y) {
-			trans_y = -1.0f;
-		} else {
-			trans_y = 0.0f;
-		}
+		Debug.DrawRay(transform.position, diff, Color.red);
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
