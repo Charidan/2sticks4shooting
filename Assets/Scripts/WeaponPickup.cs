@@ -9,6 +9,7 @@ public class WeaponPickup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		weapon_type = 1;
 	}
 	
 	// Update is called once per frame
@@ -19,6 +20,9 @@ public class WeaponPickup : MonoBehaviour {
 			Debug.Log("Weapon Pickup");
 
 			// Transfer weapon attributes to destination from here
+			Player destination = obj.gameObject.GetComponent<Player> (); 
+
+			destination.swapWeapon(weapon_type);
 
 			Destroy(gameObject);
 		}

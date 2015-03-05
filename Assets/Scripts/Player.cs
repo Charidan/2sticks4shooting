@@ -214,6 +214,19 @@ public class Player : MonoBehaviour {
 		UI_color = player_UI_color;
 	}
 
+	// the player drops the current weapon they are holding switches it for the weapon they picked up
+	public void swapWeapon(int type){
+		WeaponManager tmp_mgr = GetComponent <WeaponManager>();
+		if (curr_weapon == held_weapons [0]) {
+			curr_weapon = held_weapons [0] = tmp_mgr.weapon_list [type];
+			curr_ammo = curr_ammo_weapon0 = held_weapons [0].getClipSize ();
+		} else {
+			curr_weapon = held_weapons [1] = tmp_mgr.weapon_list [type];
+			curr_ammo = curr_ammo_weapon0 = held_weapons [1].getClipSize ();
+		}
+		gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
+	}
+
 	// accessor functions
 
 	public int getHP(){
