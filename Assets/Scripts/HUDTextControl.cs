@@ -36,11 +36,15 @@ public class HUDTextControl : MonoBehaviour {
 		health_to_opacity = (total_player_HP / Player.getNumPlayers ()) / 10000f;
 		health_to_percentage = (total_player_HP / Player.getNumPlayers ()) / 100f;
 
+		// format the string with the correct number of digits
 		if (health_to_percentage == 100) {
 			signal_strength.text = "Signal Strength: " + health_to_percentage.ToString ("000.00") + "%";
+		} else if (health_to_percentage < 10) {
+			signal_strength.text = "Signal Strength: " + health_to_percentage.ToString ("0.00") + "%";
 		} else {
 			signal_strength.text = "Signal Strength: " + health_to_percentage.ToString ("00.00") + "%";
 		}
+
 		signal_strength.color = new Color (1.0f - health_to_opacity, health_to_opacity, 0.0f);
 	}
 }
