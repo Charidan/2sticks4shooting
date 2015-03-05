@@ -67,4 +67,8 @@ public abstract class Weapon: MonoBehaviour {
 	public int getFireRate(){
 		return fireRate;
 	}
+
+	public bool canFire(){
+		return (fireRate == curr_ROF);
+	}
 }

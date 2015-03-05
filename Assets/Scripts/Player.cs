@@ -89,13 +89,22 @@ public class Player : MonoBehaviour {
 			else{curr_ammo_weapon1 = curr_ammo;}
 		}
 
-		// decrease ammo for each weapon properly
-		if (Input.GetMouseButtonDown (0) && curr_ammo != 0) {
+		// decrease ammo for semi-automatic weapons (all weapons not the Sin Wave Gun)
+		if (Input.GetMouseButtonDown (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType() != 1) {
 			curr_weapon.Fire(this);
 			curr_ammo--;
 			gun_cursor.setAmmoCount(curr_ammo);
 			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0--;}
 			else{curr_ammo_weapon1--;}
+		}
+
+		// used to allow the Sin Wave Gun to fire automatically 
+		if (Input.GetMouseButton (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType () == 1) {
+			curr_weapon.Fire(this);
+			curr_ammo--;
+			gun_cursor.setAmmoCount(curr_ammo);
+			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0--;}
+			else{curr_ammo_weapon1--;}		
 		}
 
 		// Q key allows the player to switch weapons only if they aren't reloading
@@ -214,7 +223,7 @@ public class Player : MonoBehaviour {
 		UI_color = player_UI_color;
 	}
 
-	// the player drops the current weapon they are holding switches it for the weapon they picked up
+	// the player swaps the current weapon they are holding with the weapon specified by int type
 	public void swapWeapon(int type){
 		WeaponManager tmp_mgr = GetComponent <WeaponManager>();
 		if (curr_weapon == held_weapons [0]) {
