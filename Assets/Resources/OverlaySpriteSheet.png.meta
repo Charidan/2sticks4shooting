@@ -4,8 +4,7 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: OverlaySpriteSheet_0
     21300002: OverlaySpriteSheet_1
-    21300004: Overlay_0
-    21300006: Overlay_1
+    21300004: OverlaySpriteSheet_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -47,25 +46,35 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Overlay_0
+    - name: OverlaySpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 1280
         height: 720
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Overlay_1
+    - name: OverlaySpriteSheet_1
       rect:
         serializedVersion: 2
         x: 1280
         y: 0
         width: 1280
         height: 720
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: OverlaySpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
