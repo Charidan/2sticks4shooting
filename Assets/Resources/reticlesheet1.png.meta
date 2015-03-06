@@ -51,52 +51,52 @@ TextureImporter:
     - name: reticlesheet1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 210
-        height: 258
+        x: 21
+        y: 37
+        width: 183
+        height: 185
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: reticlesheet1_1
       rect:
         serializedVersion: 2
-        x: 210
-        y: 0
-        width: 210
-        height: 258
+        x: 220
+        y: 37
+        width: 182
+        height: 185
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: reticlesheet1_2
       rect:
         serializedVersion: 2
-        x: 420
-        y: 0
-        width: 210
-        height: 258
+        x: 416
+        y: 37
+        width: 183
+        height: 185
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: reticlesheet1_3
       rect:
         serializedVersion: 2
-        x: 630
-        y: 0
-        width: 210
-        height: 258
+        x: 618
+        y: 37
+        width: 183
+        height: 185
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: reticlesheet1_4
       rect:
         serializedVersion: 2
-        x: 840
-        y: 0
-        width: 210
-        height: 258
+        x: 821
+        y: 37
+        width: 183
+        height: 185
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
