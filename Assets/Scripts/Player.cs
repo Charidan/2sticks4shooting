@@ -12,11 +12,11 @@ public class Player : MonoBehaviour {
 	private bool reloading;
 	protected int max_hp;
 	protected int curr_hp;
-	protected int curr_ammo;
+	public int curr_ammo;
 	protected int curr_ammo_weapon0;
-	public int curr_ammo_weapon1;
+	protected int curr_ammo_weapon1;
 	// fields of type "Weapon" are pointers to instances of Weapons inside class WeaponManager
-	protected Weapon curr_weapon;
+	public Weapon curr_weapon;
 	protected Weapon[] held_weapons;
 	public Vector2 speed;
 	public Vector2 movement;
@@ -224,16 +224,16 @@ public class Player : MonoBehaviour {
 	}
 
 	// the player swaps the current weapon they are holding with the weapon specified by int type
-	public void swapWeapon(int type){
+	public void swapWeapon(int new_type){
 		WeaponManager tmp_mgr = GetComponent <WeaponManager>();
 		if (curr_weapon == held_weapons [0]) {
-			curr_weapon = held_weapons [0] = tmp_mgr.weapon_list [type];
-			curr_ammo = curr_ammo_weapon0 = held_weapons [0].getClipSize ();
+			curr_weapon = held_weapons [0] = tmp_mgr.weapon_list [new_type];
+			curr_ammo = curr_ammo_weapon0 = held_weapons[0].getClipSize ();
 		} else {
-			curr_weapon = held_weapons [1] = tmp_mgr.weapon_list [type];
-			curr_ammo = curr_ammo_weapon0 = held_weapons [1].getClipSize ();
+			curr_weapon = held_weapons [1] = tmp_mgr.weapon_list [new_type];
+			curr_ammo = curr_ammo_weapon1 = held_weapons[1].getClipSize ();
 		}
-		gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
+		gun_cursor.setReticule(new_type, curr_ammo);
 	}
 
 	// accessor functions
