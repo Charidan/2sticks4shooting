@@ -15,7 +15,7 @@ public class BasicWeapon : Weapon {
 	void Start () {
 		speed = 8.0f;
 		weapon_type = 0;
-		maxClipSize = 6;
+		maxClipSize = 4;
 		reloadSpeed = 60;
 		curr_reload = 60;
 		// the cap to the mortar is the reload speed, not the fire rate

@@ -14,7 +14,12 @@ public class Reticule : MonoBehaviour {
 	public Vector3 mouse;
 
 	void Awake(){
-
+		// all_reticules must be a jagged array, otherwise space will be wasted
+		all_reticules = new Sprite[4][];
+		all_reticules [0] = Resources.LoadAll<Sprite> ("reticlesheet1");
+		all_reticules [1] = Resources.LoadAll<Sprite> ("reticlesheet4");
+		all_reticules [2] = Resources.LoadAll<Sprite> ("reticlesheet2");
+		all_reticules [3] = Resources.LoadAll<Sprite> ("reticlesheet3");
 	}
 
 	// Use this for initialization
@@ -25,6 +30,7 @@ public class Reticule : MonoBehaviour {
 		if (owner != null) {
 			mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			transform.position = new Vector3(mouse.x, mouse.y);
+			GetComponent<SpriteRenderer>().sprite = all_reticules[weapon_type][curr_ammo];
 		}
 	}
 
