@@ -141,7 +141,7 @@ public class Player : MonoBehaviour {
 	}
 
 	// Adjust hp based on integer value
-	void adj_hp(int adj) {
+	public void adj_hp(int adj) {
 		curr_hp += adj;
 		if(curr_hp < 0) curr_hp = 0;
 		if(curr_hp > max_hp) curr_hp = max_hp;

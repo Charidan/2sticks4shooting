@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class SinBullet : Projectile {
-	public float MoveSpeed = 5.0f;
+	public float MoveSpeed = 1.0f;
 	
-	public float frequency = 10f;  // Speed of sine movement
-	public float magnitude = 10f;   // Size of sine movement
+	public float frequency = 5f;  // Speed of sine movement
+	public float magnitude = 5f;   // Size of sine movement
 	private Vector3 axis;
 
 	private Vector3 _destination;
