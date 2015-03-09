@@ -18,7 +18,7 @@ namespace AssemblyCSharp
 		bool doorSouth = false;
 		bool doorWest  = false;
 
-		public const int offset_amount = 14;
+		public const int offset_amount = 10;
 
 		public Room ()
 		{

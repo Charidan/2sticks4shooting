@@ -37,8 +37,6 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//particleSystem.renderer.sortingLayerName = "UI";
-
 		max_hp = 10000;
 		curr_hp = 10000;
 
