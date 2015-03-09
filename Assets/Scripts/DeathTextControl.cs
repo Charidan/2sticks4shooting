@@ -2,34 +2,23 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class OverlayControl : MonoBehaviour {
+public class DeathTextControl : MonoBehaviour {
 
-	protected Sprite[] overlay;
 	// uses GameObject as type due to FindGameObjectsWithTag() only returning GameObject[]
 	protected GameObject[] calc_hp;
-	protected int toggleImage;
-	protected int delay_counter;
 	protected int total_player_HP;
 	// used for converting total health to individual color values
 	protected float health_to_opacity;
-
-	void Awake()
-	{
-		// load all frames in overlay array
-		overlay = Resources.LoadAll<Sprite>("OverlaySpriteSheet");
-	}
-
+	protected Text signal_lost;
 	// Use this for initialization
 	void Start () {
-		toggleImage = 0;
-		delay_counter = 0;
-		calc_hp = null;
 		total_player_HP = 0;
-		health_to_opacity = 0.0f;
+		health_to_opacity = 0;
+		signal_lost = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
-	void Update(){
+	void Update () {
 		// if total_player_HP is not reset, the value will only increase and not be an aggregate of the total health
 		total_player_HP = 0;
 		// used to get references to all player objects for oppacity calculation
@@ -42,28 +31,8 @@ public class OverlayControl : MonoBehaviour {
 		}
 		// normalize health_to_opacity to a number between 1.0 and 0
 		health_to_opacity = (total_player_HP / Player.getNumPlayers ()) / 10000f;
-		if (health_to_opacity > 0) {
-			// the Math.Pow is designed to cap the opacity at 50% of completely opaque to still allow for playability.
-			GetComponent<Image> ().color = new Color (1.0f, 1.0f, 1.0f, Mathf.Pow ((1.0f - health_to_opacity) / 2, 2.0f));
-		} else {
-			if(GetComponent<Image> ().color.a < 1.0f){
-				GetComponent<Image> ().color = new Color(1.0f, 1.0f, 1.0f, GetComponent<Image> ().color.a + 0.01f);
-			}
+		if (health_to_opacity <= 0 && signal_lost.color.a < 1.0f) {
+			signal_lost.color = new Color(1.0f, 0.0f, 0.0f, signal_lost.color.a + 0.01f);
 		}
-	}
-
-	void FixedUpdate () {
-		if (delay_counter == 4) {
-			delay_counter = 0;
-			if(toggleImage < 2){
-				toggleImage++;
-			}else{
-				toggleImage = 0;
-			}
-		}
-
-		// toggles between the two overlays every 5 updates
-		GetComponent<Image> ().sprite = overlay[toggleImage];
-		delay_counter++;
 	}
 }
