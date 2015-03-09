@@ -122,7 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364bfd2e34caa034aab1f53a6fe5b0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curr_ammo_weapon1: 0
+  curr_ammo: 0
+  curr_weapon: {fileID: 0}
   speed: {x: 0, y: 0}
   movement: {x: 0, y: 0}
   pSprites: []
@@ -672,3 +673,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74aabcf97fbd44e6d859273130f2a240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pSprites: []
