@@ -141,9 +141,12 @@ namespace AssemblyCSharp
 				}
 				Room adj = FloorGraph.singleton.get(myCoord);
 				if(adj == null) unexploredDoors++;
+				else Debug.Log("Door ignored "+doorDir);
 			}
 
 			room.generateWalls ();
+
+			Debug.Log ("unexDoors = " + unexploredDoors);
 
 			return room;
 		}
