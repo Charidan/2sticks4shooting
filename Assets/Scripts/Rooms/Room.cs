@@ -18,10 +18,9 @@ namespace AssemblyCSharp
 		bool doorSouth = false;
 		bool doorWest  = false;
 
-		public const int offset_amount = 10;
-
 		public Room ()
 		{
+			// TODO: instantiate a room object with a background image
 		}
 
 		public void addSourceDoor(FloorManager.Direction dir)
@@ -45,31 +44,18 @@ namespace AssemblyCSharp
 
 		public void addUnexploredDoor(FloorManager.Direction dir)
 		{
-			// sanitize input
-			if (dir > FloorManager.Direction.WEST)
-			{
-				addUnexploredDoor(dir-4);
-				return;
-			}
-
-			Vector2 trans = new Vector2(0,0);
-			bool rotate = false;
-
 			switch (dir)
 			{
 				case FloorManager.Direction.NORTH:
 					if(doorNorth)
 					{
-						// don't make a door where a door already exists
-						// instead make a door one step clockwise
 						addUnexploredDoor(dir+1);
 						return;
 					}
 				    else
 					{
-						// door is good, actually make it
 						doorNorth = true;
-						trans.y += offset_amount/2;
+						// TODO: instantiate a door
 					}
 				break;
 				case FloorManager.Direction.EAST:
@@ -81,8 +67,7 @@ namespace AssemblyCSharp
 				    else
 					{
 						doorEast = true;
-						rotate = true;
-						trans.x += offset_amount/2;
+						// TODO: instantiate a door
 					}
 				break;
 				case FloorManager.Direction.SOUTH:
@@ -94,101 +79,28 @@ namespace AssemblyCSharp
 				    else
 					{
 						doorSouth = true;
-						trans.y -= offset_amount/2;
+						// TODO: instantiate a door
 					}
 				break;
 				case FloorManager.Direction.WEST:
 					if(doorWest)
 					{
-						addUnexploredDoor(dir-3);
+						addUnexploredDoor(dir+1);
 						return;
 					}
 				    else
 					{
 						doorWest = true;
-						rotate = true;
-						trans.x -= offset_amount/2;
+						// TODO: instantiate a door
 					}
 				break;
 			}
-			int deg = (rotate) ? 90 : 0;
-			Door d = (Door) Instantiate(Resources.Load<Door>("Prefabs/Door"), transform.position, transform.rotation*Quaternion.Euler(0,0,deg));
-			d.rigidbody2D.position += trans;
-			d.room = this;
-			d.dir = dir;
 		}
 
 		public void generateWalls()
 		{
-			Vector2 myCoord = (Vector2) FloorGraph.singleton.get (this);
-
-			// Make sure to allow door access and not to layer walls over doors
-			for(int x = -offset_amount/2; x <= offset_amount/2; x++)
-			{
-				if(x != offset_amount/2 && (x != 0 || !doorNorth))
-				{
-					if(x == 0)
-					{
-						myCoord.y += 1;
-						Room adj = FloorGraph.singleton.get(myCoord);
-						if(adj != null)
-						{
-							if(adj.doorSouth) continue;
-						}
-						myCoord.y -= 1;
-					}
-					Wall w = (Wall) Instantiate(Resources.Load<Wall>("Prefabs/Wall"), transform.position, transform.rotation);
-					w.rigidbody2D.position += new Vector2((offset_amount/10)*x,offset_amount/2);
-				}
-				if(x != -offset_amount/2 && (x != 0 || !doorSouth))
-				{
-					if(x == 0)
-					{
-						myCoord.y -= 1;
-						Room adj = FloorGraph.singleton.get(myCoord);
-						if(adj != null)
-						{
-							if(adj.doorNorth) continue;
-						}
-						myCoord.y += 1;
-					}
-					Wall w = (Wall) Instantiate(Resources.Load<Wall>("Prefabs/Wall"), transform.position, transform.rotation);
-					w.rigidbody2D.position += new Vector2((offset_amount/10)*x,-offset_amount/2);
-				}
-			}
-			for(int y = -offset_amount/2; y <= offset_amount/2; y++)
-			{
-				if(y != -offset_amount/2 && (y != 0 || !doorEast))
-				{
-					if(y == 0)
-					{
-						myCoord.x += 1;
-						Room adj = FloorGraph.singleton.get(myCoord);
-						if(adj != null)
-						{
-							if(adj.doorWest) continue;
-						}
-						myCoord.x -= 1;
-					}
-					Wall w = (Wall) Instantiate(Resources.Load<Wall>("Prefabs/Wall"), transform.position, transform.rotation*Quaternion.Euler(0, 0, 90));
-					w.rigidbody2D.position += new Vector2(offset_amount/2,(offset_amount/10)*y);
-				}
-				if(y != offset_amount/2 && (y != 0 || !doorWest))
-				{
-					if(y == 0)
-					{
-						myCoord.x -= 1;
-						Room adj = FloorGraph.singleton.get(myCoord);
-						if(adj != null)
-						{
-							if(adj.doorEast) continue;
-						}
-						myCoord.x += 1;
-					}
-					Wall w = (Wall) Instantiate(Resources.Load<Wall>("Prefabs/Wall"), transform.position, transform.rotation*Quaternion.Euler(0, 0, 90));
-					w.rigidbody2D.position += new Vector2(-offset_amount/2,(offset_amount/10)*y);
-				}
-			}
+			// TODO: Implement
+			// TODO: Make sure to allow door access and not to layer walls over doors
 		}
 
 	}
