@@ -31,6 +31,10 @@ public class DeathTextControl : MonoBehaviour {
 		}
 		// normalize health_to_opacity to a number between 1.0 and 0
 		health_to_opacity = (total_player_HP / Player.getNumPlayers ()) / 10000f;
+	}
+
+	void FixedUpdate(){
+		// fade in effect in FixedUpdate() for consistent timing
 		if (health_to_opacity <= 0 && signal_lost.color.a < 1.0f) {
 			signal_lost.color = new Color(1.0f, 0.0f, 0.0f, signal_lost.color.a + 0.01f);
 		}

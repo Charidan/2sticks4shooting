@@ -44,7 +44,15 @@ public class HUDTextControl : MonoBehaviour {
 		} else {
 			signal_strength.text = "Signal Strength: " + health_to_percentage.ToString ("00.00") + "%";
 		}
+	}
 
-		signal_strength.color = new Color (1.0f - health_to_opacity, health_to_opacity, 0.0f);
+	void FixedUpdate(){
+		// color effects in FixedUpdate() for consistent timing
+		if (health_to_opacity > 0) {
+			signal_strength.color = new Color (1.0f - health_to_opacity, health_to_opacity, 0.0f);
+		} else {
+			// the fade effect for the text
+			signal_strength.color = new Color (1.0f - health_to_opacity, health_to_opacity, 0.0f, signal_strength.color.a - 0.02f);
+		}
 	}
 }

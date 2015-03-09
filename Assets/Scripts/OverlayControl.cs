@@ -45,14 +45,17 @@ public class OverlayControl : MonoBehaviour {
 		if (health_to_opacity > 0) {
 			// the Math.Pow is designed to cap the opacity at 50% of completely opaque to still allow for playability.
 			GetComponent<Image> ().color = new Color (1.0f, 1.0f, 1.0f, Mathf.Pow ((1.0f - health_to_opacity) / 2, 2.0f));
-		} else {
-			if(GetComponent<Image> ().color.a < 1.0f){
-				GetComponent<Image> ().color = new Color(1.0f, 1.0f, 1.0f, GetComponent<Image> ().color.a + 0.01f);
-			}
-		}
+		} 
 	}
 
 	void FixedUpdate () {
+
+		// fade effect for the overlay in FixedUpdate() for consistent timing
+		if(health_to_opacity <= 0 && GetComponent<Image> ().color.a < 1.0f) {
+			GetComponent<Image> ().color = new Color(1.0f, 1.0f, 1.0f, GetComponent<Image> ().color.a + 0.01f);
+		}
+
+		// in FixedUpdate() for consistency
 		if (delay_counter == 4) {
 			delay_counter = 0;
 			if(toggleImage < 2){
