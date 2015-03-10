@@ -12,8 +12,8 @@ public class ReverseShotgun : Weapon {
 		speed = 8.0f;
 		maxClipSize = 7;
 		// should take 1.5 seconds to reload (to be balanced later)
-		reloadSpeed = 90;
-		curr_reload = 90;
+		reloadSpeed = 91;
+		curr_reload = 91;
 		// should be able to fire about 2x a second (to be balanced later)
 		fireRate = 30;
 		curr_ROF = 30;

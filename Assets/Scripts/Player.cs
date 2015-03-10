@@ -268,6 +268,10 @@ public class Player : MonoBehaviour {
 		return curr_weapon;
 	}
 
+	public bool isReloading(){
+		return reloading;
+	}
+
 	public static int getNumPlayers(){
 		return num_players;
 	}

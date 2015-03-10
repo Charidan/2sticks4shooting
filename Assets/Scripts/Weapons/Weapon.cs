@@ -11,6 +11,7 @@ public abstract class Weapon: MonoBehaviour {
 	// implement in children
 	protected int damagePerProjectile;
 	protected int maxClipSize;
+	// reloadSpeed should be evenly divisible by maxClipSize
 	protected int reloadSpeed;
 	protected int curr_reload;
 	// type corresponds to the weapon's index in the WeaponManager List

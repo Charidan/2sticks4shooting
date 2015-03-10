@@ -2216,6 +2216,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11494156, guid: d796062077e1f604daf52cffb0b99832, type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d796062077e1f604daf52cffb0b99832, type: 2}
   m_RootGameObject: {fileID: 1126622520}

@@ -9,9 +9,11 @@ public class Reticule : MonoBehaviour {
 	private Sprite[][] all_reticules;
 	// curr_ammo corresponds to the second index of all_reticules[][]
 	public int curr_ammo;
+	public int reload_index;
 	private Player owner; 
 
 	public Vector3 mouse;
+	
 
 	void Awake(){
 		// all_reticules must be a jagged array, otherwise space will be wasted
@@ -23,7 +25,9 @@ public class Reticule : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {}
+	void Start () {
+		reload_index = 0;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,7 +35,16 @@ public class Reticule : MonoBehaviour {
 		if (owner != null && owner.getHP() > 0) {
 			mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			transform.position = new Vector3(mouse.x, mouse.y);
-			GetComponent<SpriteRenderer>().sprite = all_reticules[weapon_type][curr_ammo];
+
+			// check if the reload time is evenly divisible by the maximum clip size of the weapon
+			// assumes that the weapon's reload speed is evenly divisible by the weapon's clip size
+			if(owner.isReloading() && owner.getCurrWeapon().getReload() % owner.getCurrWeapon().getClipSize() == 0 
+			   					   && reload_index < owner.getCurrWeapon().getClipSize()){
+				GetComponent<SpriteRenderer>().sprite = all_reticules[weapon_type][reload_index++];
+			}else if(owner.isReloading() == false) {
+				GetComponent<SpriteRenderer>().sprite = all_reticules[weapon_type][curr_ammo];
+				reload_index = 0;
+			}
 		}
 	}
 
