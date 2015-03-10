@@ -27,8 +27,7 @@ public class Reticule : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// only update the reticule if there is an owner or if the owner is alive
-		if (owner != null && owner.getHP() > 0) {
+		if (owner != null) {
 			mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			transform.position = new Vector3(mouse.x, mouse.y);
 			GetComponent<SpriteRenderer>().sprite = all_reticules[weapon_type][curr_ammo];
@@ -40,14 +39,9 @@ public class Reticule : MonoBehaviour {
 	// Allows the Reticule to properly receive its owner on creation
 	public void Initialize(Player new_owner){
 		owner = new_owner;
+		GetComponent<SpriteRenderer> ().color = owner.getUIColor ();
 		weapon_type = owner.getCurrWeapon ().getWeaponType();
 		curr_ammo = owner.getAmmo();
-	}
-
-	// this should only be called when the player Reticule is associated with has its color set
-	// new_color should be the Reticule owner's UI color variable
-	public void setColor(Color new_color){
-		GetComponent<SpriteRenderer> ().color = new_color;
 	}
 
 	// Call this only when the player switches weapons 
@@ -56,7 +50,7 @@ public class Reticule : MonoBehaviour {
 		curr_ammo = new_ammo_count;
 	}
 
-	// call this when the player's ammo count is changed but not when the player switches weapons
+	// call this when the player's ammo count is changed
 	public void setAmmoCount(int new_ammo_count){
 		curr_ammo = new_ammo_count;
 	}

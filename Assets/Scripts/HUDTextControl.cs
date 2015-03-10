@@ -28,13 +28,13 @@ public class HUDTextControl : MonoBehaviour {
 		calc_hp = GameObject.FindGameObjectsWithTag ("Player");
 		// if there are players, add their total health each frame
 		if (calc_hp != null) {
-			for(int i = 0; i < Player.num_players; i++)	{
+			for(int i = 0; i < Player.getNumPlayers(); i++)	{
 				total_player_HP += calc_hp[i].GetComponent<Player>().getHP();
 			}
 		}
 		// normalize health_to_opacity to a number between 1.0 and 0
-		health_to_opacity = (total_player_HP / Player.num_players) / 10000f;
-		health_to_percentage = (total_player_HP / Player.num_players) / 100f;
+		health_to_opacity = (total_player_HP / Player.getNumPlayers ()) / 10000f;
+		health_to_percentage = (total_player_HP / Player.getNumPlayers ()) / 100f;
 
 		// format the string with the correct number of digits
 		if (health_to_percentage == 100) {
