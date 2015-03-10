@@ -40,7 +40,6 @@ public class OverlayControl : MonoBehaviour {
 		// if there are players, add their total health each frame
 		if (calc_hp != null) {
 			for(int i = 0; i < Player.num_players; i++)	{
-				Debug.Log(calc_hp);
 				total_player_HP += calc_hp[i].GetComponent<Player>().getHP();
 			}
 		}
@@ -78,6 +77,8 @@ public class OverlayControl : MonoBehaviour {
 		}
 
 		// after 60 updates, return to the main menu
-		if (delay_death_counter > 60) {Application.LoadLevel("MainMenu");}
+		if (delay_death_counter > 60) {
+			Application.LoadLevel("MainMenu");
+		}
 	}
 }

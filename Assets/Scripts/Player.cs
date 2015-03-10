@@ -39,8 +39,6 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//particleSystem.renderer.sortingLayerName = "UI";
-
 		curr_hp = max_hp = 10000;
 
 		// should be edited after creation with the appropriate player HUD color
@@ -68,6 +66,7 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (num_players);
 		// player can only do things if they are alive
 		if (curr_hp > 0) {
 			if (!weapon_initialize) {
@@ -129,7 +128,6 @@ public class Player : MonoBehaviour {
 			
 			// Test hp (-5 on space press, +0.05 per update cycle)
 			if (Input.GetKeyDown(KeyCode.Space)) {
-				Debug.Log("Ouch, my hp is going down :(" + curr_hp + ")");
 				adj_hp (-500);
 			}	
 		}
@@ -197,10 +195,6 @@ public class Player : MonoBehaviour {
 		else if (arcTan < 67.5 && arcTan >= 22.5)
 			//arcTan = 45;
 			GetComponent<SpriteRenderer> ().sprite = pSprites [0];
-
-		//old code
-		//rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
-		//Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 	}
 
 	// must be called once in Update() to allow for the weapons to correctly give the following attributes their correct values:
