@@ -131,6 +131,14 @@ public class Player : MonoBehaviour {
 				adj_hp (-500);
 			}	
 		}
+
+		// TEST ROOM CODE
+		if (Input.GetKeyDown(KeyCode.P)) {
+			Debug.Log("unexplored rooms =" + AssemblyCSharp.FloorManager.singleton.unexploredDoors);
+		}
+		if (Input.GetKeyDown(KeyCode.L)) {
+			Debug.Log("roomCount =" + AssemblyCSharp.FloorManager.singleton.roomCount);
+		}
 	}
 	
 	// Use for updates in the players physical movements
