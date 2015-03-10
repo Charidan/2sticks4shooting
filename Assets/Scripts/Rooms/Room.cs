@@ -54,6 +54,7 @@ namespace AssemblyCSharp
 
 			Vector2 trans = new Vector2(0,0);
 			bool rotate = false;
+			Vector2 myCoord = (Vector2) FloorGraph.singleton.get (this);
 
 			switch (dir)
 			{
@@ -67,6 +68,15 @@ namespace AssemblyCSharp
 					}
 				    else
 					{
+						// make sure there is empty space to build a new room in
+						myCoord.y += 1;
+						Room adj = FloorGraph.singleton.get(myCoord);
+						if(adj != null)
+						{
+							if(adj.doorSouth) doorNorth = true;
+							return;
+						}
+
 						// door is good, actually make it
 						doorNorth = true;
 						trans.y += offset_amount/2;
@@ -80,6 +90,14 @@ namespace AssemblyCSharp
 					}
 				    else
 					{
+						myCoord.x += 1;
+						Room adj = FloorGraph.singleton.get(myCoord);
+						if(adj != null)
+						{
+							if(adj.doorWest) doorEast = true;
+							return;
+						}
+
 						doorEast = true;
 						rotate = true;
 						trans.x += offset_amount/2;
@@ -93,6 +111,14 @@ namespace AssemblyCSharp
 					}
 				    else
 					{
+						myCoord.y -= 1;
+						Room adj = FloorGraph.singleton.get(myCoord);
+						if(adj != null)
+						{
+							if(adj.doorNorth) doorSouth = true;
+							return;
+						}
+
 						doorSouth = true;
 						trans.y -= offset_amount/2;
 					}
@@ -105,6 +131,14 @@ namespace AssemblyCSharp
 					}
 				    else
 					{
+						myCoord.x -= 1;
+						Room adj = FloorGraph.singleton.get(myCoord);
+						if(adj != null)
+						{
+							if(adj.doorEast) doorWest = true;
+							return;
+						}
+
 						doorWest = true;
 						rotate = true;
 						trans.x -= offset_amount/2;
