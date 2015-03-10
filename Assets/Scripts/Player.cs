@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	// used for determining the number of players
-	protected static int num_players = 0;
+	// used for determining the number of players will most likely need to be removed due to Unity's handling of static variables
+	protected static int num_players;
 
 	// Initialize player attributes
 	private bool weapon_initialize;
@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
 
 	void Awake()
 	{
+		num_players = 0;
 		// load all frames in fruitsSprites array
 		pSprites = Resources.LoadAll<Sprite>("examplesheet");
 	}
@@ -47,16 +48,18 @@ public class Player : MonoBehaviour {
 
 		num_players++; 
 
-		// creates an instance of HealthBar for the specific player
+		// creates an instance of HealthBar for the specific player and sets its color to the default UI_color
 		hit_points = (HealthBar) Instantiate(Resources.Load<HealthBar>("Prefabs/HealthBar"));
 		hit_points.Initialize (this);
+		hit_points.setColor (UI_color);
 
 		weapon_initialize = false; 
 
 		speed = new Vector2 (10, 10);
 
-		// creates an instance of Reticule for the specific player
+		// creates an instance of Reticule for the specific player and sets its color to the default UI_color
 		gun_cursor = (Reticule) Instantiate(Resources.Load<Reticule>("Prefabs/Reticule"));
+		gun_cursor.setColor (UI_color);
 
 		GetComponent<SpriteRenderer> ().sprite = pSprites [1];
 
@@ -65,12 +68,14 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		// outside of alive check since initialization should happen regardless of player status
+		if (!weapon_initialize) {
+			InitializeWeapons ();
+			weapon_initialize = !weapon_initialize;
+		}
 		// player can only do things if they are alive
 		if (curr_hp > 0) {
-			if (!weapon_initialize) {
-				InitializeWeapons ();
-				weapon_initialize = !weapon_initialize;
-			}
+
 			// Detect keys
 			float inputX = Input.GetAxis("Horizontal");
 			float inputY = Input.GetAxis("Vertical");
@@ -78,8 +83,8 @@ public class Player : MonoBehaviour {
 			// Calculate the movement vector
 			movement = new Vector2(speed.x * inputX, speed.y * inputY);
 			
-			// Starts the reload process for the player
-			if(Input.GetKeyDown(KeyCode.R)){
+			// Starts the reload process for the player only if their clip is full
+			if(Input.GetKeyDown(KeyCode.R) && curr_ammo != curr_weapon.getClipSize()){
 				curr_weapon.reload();
 				reloading = true; 
 			}
@@ -126,7 +131,6 @@ public class Player : MonoBehaviour {
 			
 			// Test hp (-5 on space press, +0.05 per update cycle)
 			if (Input.GetKeyDown(KeyCode.Space)) {
-				Debug.Log("Ouch, my hp is going down :(" + curr_hp + ")");
 				adj_hp (-500);
 			}	
 		}
@@ -194,10 +198,6 @@ public class Player : MonoBehaviour {
 		else if (arcTan < 67.5 && arcTan >= 22.5)
 			//arcTan = 45;
 			GetComponent<SpriteRenderer> ().sprite = pSprites [0];
-
-		//old code
-		//rigidbody2D.transform.rotation = Quaternion.Euler(0, 0, arcTan);
-		//Debug.Log (Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90);
 	}
 
 	// must be called once in Update() to allow for the weapons to correctly give the following attributes their correct values:
@@ -229,6 +229,8 @@ public class Player : MonoBehaviour {
 	// this function is only supposed to change the UI color (as its name implies)
 	public void setUIColor(Color player_UI_color){
 		UI_color = player_UI_color;
+		gun_cursor.setColor (UI_color);
+		hit_points.setColor (UI_color);
 	}
 
 	// the player swaps the current weapon they are holding with the weapon specified by int type

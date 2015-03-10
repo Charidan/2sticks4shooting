@@ -16,7 +16,12 @@ public class DeathTextControl : MonoBehaviour {
 		health_to_opacity = 0;
 		signal_lost = GetComponent<Text>();
 	}
-	
+
+	/*
+	 * Note that all instances of Player.getNumPlayers() will probably need to be changed once multiplayer is implemented
+	 * This is due to static variables not being reset in Unity when a scene is loaded
+	 */
+
 	// Update is called once per frame
 	void Update () {
 		// if total_player_HP is not reset, the value will only increase and not be an aggregate of the total health

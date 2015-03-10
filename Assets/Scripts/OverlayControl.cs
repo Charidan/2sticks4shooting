@@ -10,7 +10,7 @@ public class OverlayControl : MonoBehaviour {
 	protected int toggleImage;
 	protected int delay_counter;
 	protected int total_player_HP;
-	// used for keeping the signal lost graphic on screen for 2 seconds after it is fully opaque before returning to the main menu
+	// used for keeping the signal lost graphic on screen for 60 updates after it is fully opaque before returning to the main menu
 	protected int delay_death_counter;
 	// used for converting total health to individual color values
 	protected float health_to_opacity;
@@ -30,7 +30,13 @@ public class OverlayControl : MonoBehaviour {
 		total_player_HP = 0;
 		health_to_opacity = 0.0f;
 	}
-	
+
+	/*
+	 * Note that all instances of Player.getNumPlayers() will probably need to be changed once multiplayer is implemented
+	 * This is due to static variables not being reset in Unity when a scene is loaded
+	 */
+
+
 	// Update is called once per frame
 	void Update(){
 		// if total_player_HP is not reset, the value will only increase and not be an aggregate of the total health
@@ -56,7 +62,6 @@ public class OverlayControl : MonoBehaviour {
 		// fade effect for the overlay in FixedUpdate() for consistent timing
 		if(health_to_opacity <= 0 && GetComponent<Image> ().color.a < 1.0f) {
 			GetComponent<Image> ().color = new Color(1.0f, 1.0f, 1.0f, GetComponent<Image> ().color.a + 0.01f);
-			delay_death_counter++;
 		}
 
 
@@ -74,10 +79,9 @@ public class OverlayControl : MonoBehaviour {
 		GetComponent<Image> ().sprite = overlay[toggleImage];
 		delay_counter++;
 
+		if (GetComponent<Image> ().color.a >= 1.0f) {delay_death_counter++;}
+
 		// after 60 updates, return to the main menu
-		if (delay_death_counter > 120) {
-			Application.LoadLevel("MainMenu");
-		}
-		Debug.Log (delay_death_counter);
+		if (delay_death_counter > 60) {Application.LoadLevel("MainMenu");}
 	}
 }

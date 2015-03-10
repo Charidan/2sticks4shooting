@@ -45,13 +45,18 @@ public class Reticule : MonoBehaviour {
 		curr_ammo = owner.getAmmo();
 	}
 
-	// Call this only when the player switches weapons 
+	// should only be called by the owner when the owner is initializing values or when the owner's UI_color variable is being changed
+	public void setColor(Color new_color){
+		GetComponent<SpriteRenderer> ().color = new_color;
+	}
+
+	// Call this only when the player switches weapons
 	public void setReticule(int new_weapon_type, int new_ammo_count){
 		weapon_type = new_weapon_type;
 		curr_ammo = new_ammo_count;
 	}
 
-	// call this when the player's ammo count is changed
+	// call this when the player's ammo count is changed but the weapon is not
 	public void setAmmoCount(int new_ammo_count){
 		curr_ammo = new_ammo_count;
 	}
