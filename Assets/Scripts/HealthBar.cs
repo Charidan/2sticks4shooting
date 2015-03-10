@@ -42,8 +42,13 @@ public class HealthBar : MonoBehaviour {
 	public void Initialize(Player new_owner){
 		owner = new_owner;
 		playerHP = owner.getHP ();
-		GetComponent<SpriteRenderer> ().color = owner.getUIColor ();
 		healthSpriteIndex = Mathf.RoundToInt (playerHP / 10);
 		transform.position = owner.transform.position;
+	}
+
+	// this should only be called when the player HealthBar is associated with has its color set
+	// new_color should be the HealthBar owner's UI color variable
+	public void setColor(Color new_color){
+		GetComponent<SpriteRenderer> ().color = new_color;
 	}
 }

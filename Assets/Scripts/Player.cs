@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	// used for determining the number of players
-	protected static int num_players = 0;
+	public static int num_players;
 
 	// Initialize player attributes
 	private bool weapon_initialize;
@@ -33,23 +33,25 @@ public class Player : MonoBehaviour {
 	{
 		// load all frames in fruitsSprites array
 		pSprites = Resources.LoadAll<Sprite>("examplesheet");
+		// to avoid problems with reloading levels
+		num_players = 0;
 	}
 
 	// Use this for initialization
 	void Start () {
 		//particleSystem.renderer.sortingLayerName = "UI";
 
-		max_hp = 10000;
-		curr_hp = 10000;
+		curr_hp = max_hp = 10000;
 
 		// should be edited after creation with the appropriate player HUD color
-		UI_color = new Color (0, 1, 1, 1);
+		UI_color = new Color (0.0f, 1.0f, 1.0f, 1.0f);
 
 		num_players++; 
 
 		// creates an instance of HealthBar for the specific player
 		hit_points = (HealthBar) Instantiate(Resources.Load<HealthBar>("Prefabs/HealthBar"));
 		hit_points.Initialize (this);
+		hit_points.setColor (UI_color);
 
 		weapon_initialize = false; 
 
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour {
 
 		// creates an instance of Reticule for the specific player
 		gun_cursor = (Reticule) Instantiate(Resources.Load<Reticule>("Prefabs/Reticule"));
+		gun_cursor.setColor (UI_color);
 
 		GetComponent<SpriteRenderer> ().sprite = pSprites [1];
 
@@ -229,6 +232,8 @@ public class Player : MonoBehaviour {
 	// this function is only supposed to change the UI color (as its name implies)
 	public void setUIColor(Color player_UI_color){
 		UI_color = player_UI_color;
+		hit_points.setColor (UI_color);
+		gun_cursor.setColor (UI_color);
 	}
 
 	// the player swaps the current weapon they are holding with the weapon specified by int type
@@ -265,9 +270,6 @@ public class Player : MonoBehaviour {
 	public Weapon getCurrWeapon(){
 		return curr_weapon;
 	}
-
-	public static int getNumPlayers(){
-		return num_players;
-	}
+	
 }
 
