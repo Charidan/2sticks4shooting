@@ -9,7 +9,7 @@ namespace AssemblyCSharp
 		public static FloorManager singleton = new FloorManager();
 		public enum Direction { NORTH, EAST, SOUTH, WEST };
 
-		int roomCount = 0;
+		public int roomCount = 0;
 		public int unexploredDoors = 1;
 		int floorDepth = 1;
 
@@ -24,9 +24,10 @@ namespace AssemblyCSharp
 
 			// initialize doorsProb
 			doorsProb[0] = new Probability<int>();
-			doorsProb[0].addProb (2, 0.5);
-			doorsProb[0].addProb (3, 0.3);
-			doorsProb[0].addProb (4, 0.2);
+			doorsProb[0].addProb (2, 0.2);
+			doorsProb[0].addProb (1, 0.3);
+			doorsProb[0].addProb (3, 0.2);
+			doorsProb[0].addProb (4, 0.3);
 
 			for (int i = 1; i < 10; i++)
 			{
@@ -124,10 +125,12 @@ namespace AssemblyCSharp
 			if (roomCount < minDoors(floorDepth) && unexploredDoors == 0) doors = Math.Max (doors, 2);
 			doors--; // ignore the door that this room was reached from
 
+			Direction doorDir = dir + doorDirProb.roll();
+
 			while(doors > 0)
 			{
-				Direction doorDir = dir + doorDirProb.roll();
-				if(doorDir > Direction.WEST) doorDir -= 4;
+				if(doorDir > Direction.WEST) doorDir -= 3; // sanitize to real direction
+
 				room.addUnexploredDoor (doorDir);
 				doors--;
 
@@ -141,6 +144,8 @@ namespace AssemblyCSharp
 				}
 				Room adj = FloorGraph.singleton.get(myCoord);
 				if(adj == null) unexploredDoors++;
+
+				doorDir++;
 			}
 
 			room.generateWalls ();
