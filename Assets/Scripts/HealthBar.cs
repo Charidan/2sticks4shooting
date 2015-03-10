@@ -16,7 +16,8 @@ public class HealthBar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// if statement for the frames before HealthBar is actually initialized so the game doesn't crash
-		if (owner != null) {
+		// only update when the owner is alive
+		if (owner != null && owner.getHP() > 0) {
 			int mapHPtoIndex = 1000;
 			transform.position = owner.transform.position;
 			playerHP = owner.getHP ();

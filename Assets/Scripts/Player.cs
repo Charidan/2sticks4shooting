@@ -65,81 +65,87 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!weapon_initialize) {
-			InitializeWeapons ();
-			weapon_initialize = !weapon_initialize;
-		}
-		// Detect keys
-		float inputX = Input.GetAxis("Horizontal");
-		float inputY = Input.GetAxis("Vertical");
-		
-		// Calculate the movement vector
-		movement = new Vector2(speed.x * inputX, speed.y * inputY);
-
-		// Starts the reload process for the player
-		if(Input.GetKeyDown(KeyCode.R)){
-			curr_weapon.reload();
-			reloading = true; 
-		}
-
-		// checks to see if reload is complete and refills ammo if this is the case
-		if (reloading && curr_weapon.getReloadSpeed () == curr_weapon.getReload ()) {
-			reloading = false;
-			curr_ammo = curr_weapon.getClipSize();
-			gun_cursor.setAmmoCount(curr_ammo);
-			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0 = curr_ammo;}
-			else{curr_ammo_weapon1 = curr_ammo;}
-		}
-
-		// decrease ammo for semi-automatic weapons (all weapons not the Sin Wave Gun)
-		if (Input.GetMouseButtonDown (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType() != 1) {
-			curr_weapon.Fire(this);
-			curr_ammo--;
-			gun_cursor.setAmmoCount(curr_ammo);
-			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0--;}
-			else{curr_ammo_weapon1--;}
-		}
-
-		// used to allow the Sin Wave Gun to fire automatically 
-		if (Input.GetMouseButton (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType () == 1) {
-			curr_weapon.Fire(this);
-			curr_ammo--;
-			gun_cursor.setAmmoCount(curr_ammo);
-			if(curr_weapon == held_weapons[0]){curr_ammo_weapon0--;}
-			else{curr_ammo_weapon1--;}		
-		}
-
-		// Q key allows the player to switch weapons only if they aren't reloading
-		if (Input.GetKeyDown (KeyCode.Q) && !reloading) {
-			if(curr_weapon == held_weapons[0]){
-				curr_weapon = held_weapons[1];
-				curr_ammo = curr_ammo_weapon1;
-				gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
-			}else{
-				curr_weapon = held_weapons[0];
-				curr_ammo = curr_ammo_weapon0;
-				gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
+		// player can only do things if they are alive
+		if (curr_hp > 0) {
+			if (!weapon_initialize) {
+				InitializeWeapons ();
+				weapon_initialize = !weapon_initialize;
 			}
-		}
-		
-		// Test hp (-5 on space press, +0.05 per update cycle)
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			Debug.Log("Ouch, my hp is going down :(" + curr_hp + ")");
-			adj_hp (-500);
+			// Detect keys
+			float inputX = Input.GetAxis("Horizontal");
+			float inputY = Input.GetAxis("Vertical");
+			
+			// Calculate the movement vector
+			movement = new Vector2(speed.x * inputX, speed.y * inputY);
+			
+			// Starts the reload process for the player
+			if(Input.GetKeyDown(KeyCode.R)){
+				curr_weapon.reload();
+				reloading = true; 
+			}
+			
+			// checks to see if reload is complete and refills ammo if this is the case
+			if (reloading && curr_weapon.getReloadSpeed () == curr_weapon.getReload ()) {
+				reloading = false;
+				curr_ammo = curr_weapon.getClipSize();
+				gun_cursor.setAmmoCount(curr_ammo);
+				if(curr_weapon == held_weapons[0]){curr_ammo_weapon0 = curr_ammo;}
+				else{curr_ammo_weapon1 = curr_ammo;}
+			}
+			
+			// decrease ammo for semi-automatic weapons (all weapons not the Sin Wave Gun)
+			if (Input.GetMouseButtonDown (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType() != 1) {
+				curr_weapon.Fire(this);
+				curr_ammo--;
+				gun_cursor.setAmmoCount(curr_ammo);
+				if(curr_weapon == held_weapons[0]){curr_ammo_weapon0--;}
+				else{curr_ammo_weapon1--;}
+			}
+			
+			// used to allow the Sin Wave Gun to fire automatically 
+			if (Input.GetMouseButton (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType () == 1) {
+				curr_weapon.Fire(this);
+				curr_ammo--;
+				gun_cursor.setAmmoCount(curr_ammo);
+				if(curr_weapon == held_weapons[0]){curr_ammo_weapon0--;}
+				else{curr_ammo_weapon1--;}		
+			}
+			
+			// Q key allows the player to switch weapons only if they aren't reloading
+			if (Input.GetKeyDown (KeyCode.Q) && !reloading) {
+				if(curr_weapon == held_weapons[0]){
+					curr_weapon = held_weapons[1];
+					curr_ammo = curr_ammo_weapon1;
+					gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
+				}else{
+					curr_weapon = held_weapons[0];
+					curr_ammo = curr_ammo_weapon0;
+					gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
+				}
+			}
+			
+			// Test hp (-5 on space press, +0.05 per update cycle)
+			if (Input.GetKeyDown(KeyCode.Space)) {
+				Debug.Log("Ouch, my hp is going down :(" + curr_hp + ")");
+				adj_hp (-500);
+			}	
 		}
 	}
 	
 	// Use for updates in the players physical movements
 	void FixedUpdate() {
-		rigidbody2D.velocity = movement;
-		rotatePlayer();
-
-		//Allows only partial health regeneration up to the nearest 10
-		// Lets current return to 10000
-		if(Mathf.RoundToInt(curr_hp) == max_hp)
-			curr_hp = max_hp;
-		else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
-			adj_hp (5);
+		// player can only get statuses updated if they are alive
+		if (curr_hp > 0) {
+			rigidbody2D.velocity = movement;
+			rotatePlayer();
+			
+			//Allows only partial health regeneration up to the nearest 10
+			// Lets current return to 10000
+			if(Mathf.RoundToInt(curr_hp) == max_hp)
+				curr_hp = max_hp;
+			else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
+				adj_hp (5);
+		}
 	}
 
 	// Adjust hp based on integer value

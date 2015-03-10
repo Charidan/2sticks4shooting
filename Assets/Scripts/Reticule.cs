@@ -27,7 +27,8 @@ public class Reticule : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (owner != null) {
+		// only update the reticule if there is an owner or if the owner is alive
+		if (owner != null && owner.getHP() > 0) {
 			mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			transform.position = new Vector3(mouse.x, mouse.y);
 			GetComponent<SpriteRenderer>().sprite = all_reticules[weapon_type][curr_ammo];

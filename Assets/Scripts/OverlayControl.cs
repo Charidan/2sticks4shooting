@@ -10,6 +10,8 @@ public class OverlayControl : MonoBehaviour {
 	protected int toggleImage;
 	protected int delay_counter;
 	protected int total_player_HP;
+	// used for keeping the signal lost graphic on screen for 2 seconds after it is fully opaque before returning to the main menu
+	protected int delay_death_counter;
 	// used for converting total health to individual color values
 	protected float health_to_opacity;
 
@@ -23,6 +25,7 @@ public class OverlayControl : MonoBehaviour {
 	void Start () {
 		toggleImage = 0;
 		delay_counter = 0;
+		delay_death_counter = 0;
 		calc_hp = null;
 		total_player_HP = 0;
 		health_to_opacity = 0.0f;
@@ -53,7 +56,9 @@ public class OverlayControl : MonoBehaviour {
 		// fade effect for the overlay in FixedUpdate() for consistent timing
 		if(health_to_opacity <= 0 && GetComponent<Image> ().color.a < 1.0f) {
 			GetComponent<Image> ().color = new Color(1.0f, 1.0f, 1.0f, GetComponent<Image> ().color.a + 0.01f);
+			delay_death_counter++;
 		}
+
 
 		// in FixedUpdate() for consistency
 		if (delay_counter == 4) {
@@ -68,5 +73,11 @@ public class OverlayControl : MonoBehaviour {
 		// toggles between the two overlays every 5 updates
 		GetComponent<Image> ().sprite = overlay[toggleImage];
 		delay_counter++;
+
+		// after 60 updates, return to the main menu
+		if (delay_death_counter > 120) {
+			Application.LoadLevel("MainMenu");
+		}
+		Debug.Log (delay_death_counter);
 	}
 }
