@@ -51,8 +51,6 @@ public class Player : MonoBehaviour {
 		reload_timer = 0;
 		reload_timer_increment = 0;
 
-		enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
-
 		// should be edited after creation with the appropriate player HUD color
 		UI_color = new Color (0, 1, 1, 1);
 
@@ -171,8 +169,11 @@ public class Player : MonoBehaviour {
 		}
 
 		// Adjust hp based on enemy distance
-		if(Vector3.Distance(enemy.position, transform.position) < 1.0f) {
-			adj_hp(-50);
+		if(GameObject.FindGameObjectWithTag("Enemy") != null) {
+			enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+			if(Vector3.Distance(enemy.position, transform.position) < 1.0f) {
+				adj_hp(-50);
+			}
 		}
 	}
 
