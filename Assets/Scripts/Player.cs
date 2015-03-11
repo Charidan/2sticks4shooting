@@ -15,6 +15,9 @@ public class Player : MonoBehaviour {
 	public int curr_ammo;
 	protected int curr_ammo_weapon0;
 	protected int curr_ammo_weapon1;
+	protected int reload_timer;
+	// used denote when a shot is loaded into the clip
+	protected int reload_timer_increment;
 	// fields of type "Weapon" are pointers to instances of Weapons inside class WeaponManager
 	public Weapon curr_weapon;
 	protected Weapon[] held_weapons;
@@ -42,6 +45,9 @@ public class Player : MonoBehaviour {
 
 		max_hp = 10000;
 		curr_hp = 10000;
+
+		reload_timer = 0;
+		reload_timer_increment = 0;
 
 		// should be edited after creation with the appropriate player HUD color
 		UI_color = new Color (0, 1, 1, 1);
@@ -75,27 +81,37 @@ public class Player : MonoBehaviour {
 		}
 		// player can only do things if they are alive
 		if (curr_hp > 0) {
-
 			// Detect keys
 			float inputX = Input.GetAxis("Horizontal");
 			float inputY = Input.GetAxis("Vertical");
-			
+
 			// Calculate the movement vector
 			movement = new Vector2(speed.x * inputX, speed.y * inputY);
-			
+
+			// to calculate the interval in which to add a bullet to curr_ammo
+			reload_timer_increment = curr_weapon.getReloadSpeed () / curr_weapon.getClipSize();
+
 			// Starts the reload process for the player only if their clip is full
 			if(Input.GetKeyDown(KeyCode.R) && curr_ammo != curr_weapon.getClipSize()){
 				curr_weapon.reload();
 				reloading = true; 
-			}
-			
-			// checks to see if reload is complete and refills ammo if this is the case
-			if (reloading && curr_weapon.getReloadSpeed () == curr_weapon.getReload ()) {
-				reloading = false;
-				curr_ammo = curr_weapon.getClipSize();
+				reload_timer = 0;
+				curr_ammo = 0;
 				gun_cursor.setAmmoCount(curr_ammo);
+			}
+
+			// reloads current ammo 1 shot at a time uses the precondition increment to save space
+			// reload_timer == curr_weapon.getReloadSpeed () / curr_weapon.getClipSize() usage below:
+			// checks if reload_timer has 
+			if (reloading && curr_ammo < curr_weapon.getClipSize() && reload_timer == reload_timer_increment) {
+				gun_cursor.setAmmoCount(++curr_ammo);
 				if(curr_weapon == held_weapons[0]){curr_ammo_weapon0 = curr_ammo;}
 				else{curr_ammo_weapon1 = curr_ammo;}
+				reload_timer = 0;
+			}
+
+			if(reloading && curr_weapon.getReloadSpeed() == curr_weapon.getReload() && curr_ammo == curr_weapon.getClipSize()){
+				reloading = false;
 			}
 			
 			// decrease ammo for semi-automatic weapons (all weapons not the Sin Wave Gun)
@@ -142,7 +158,11 @@ public class Player : MonoBehaviour {
 		if (curr_hp > 0) {
 			rigidbody2D.velocity = movement;
 			rotatePlayer();
-			
+
+			if(reload_timer < reload_timer_increment && reloading){
+				reload_timer++;
+			}
+
 			//Allows only partial health regeneration up to the nearest 10
 			// Lets current return to 10000
 			if(Mathf.RoundToInt(curr_hp) == max_hp)
