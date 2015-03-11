@@ -37,30 +37,18 @@ public class Player : MonoBehaviour {
 	void Awake()
 	{
 		num_players = 0;
-<<<<<<< HEAD
-=======
-		// load all frames in fruitsSprites array
-		pSprites = Resources.LoadAll<Sprite>("playersheet");
-	}
-
-	// Use this for initialization
-	void Start () {
-		//particleSystem.renderer.sortingLayerName = "UI";
-
->>>>>>> origin/master
 		max_hp = 10000;
 		curr_hp = 10000;
-
+		
 		reload_timer = 0;
 		reload_timer_increment = 0;
-
+		
 		weapon_initialize = false; 
-
+		
 		// should be edited after creation with the appropriate player HUD color
 		UI_color = new Color (0, 1, 1, 1);
-
 		// load all frames in fruitsSprites array
-		pSprites = Resources.LoadAll<Sprite>("examplesheet");
+		pSprites = Resources.LoadAll<Sprite>("playersheet");
 	}
 
 	// Use this for initialization
