@@ -37,6 +37,17 @@ public class Player : MonoBehaviour {
 	void Awake()
 	{
 		num_players = 0;
+<<<<<<< HEAD
+=======
+		// load all frames in fruitsSprites array
+		pSprites = Resources.LoadAll<Sprite>("playersheet");
+	}
+
+	// Use this for initialization
+	void Start () {
+		//particleSystem.renderer.sortingLayerName = "UI";
+
+>>>>>>> origin/master
 		max_hp = 10000;
 		curr_hp = 10000;
 
@@ -145,6 +156,14 @@ public class Player : MonoBehaviour {
 					gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
 				}
 			}
+
+			// TEST ROOM CODE
+			if (Input.GetKeyDown(KeyCode.P)) {
+				Debug.Log("unexplored rooms =" + AssemblyCSharp.FloorManager.singleton.unexploredDoors);
+			}
+			if (Input.GetKeyDown(KeyCode.L)) {
+				Debug.Log("roomCount =" + AssemblyCSharp.FloorManager.singleton.roomCount);
+			}
 		}
 	}
 	
@@ -193,23 +212,23 @@ public class Player : MonoBehaviour {
 		//face North
 		if (arcTan < 22.5 && arcTan >= -22.5)
 			//arcTan = 0;
-			GetComponent<SpriteRenderer> ().sprite = pSprites [1];
+			GetComponent<SpriteRenderer> ().sprite = pSprites [4];
 		//north-east
 		else if (arcTan < -22.5 && arcTan >= -67.5)
 			//arcTan = -45;
-			GetComponent<SpriteRenderer> ().sprite = pSprites [2];
+			GetComponent<SpriteRenderer> ().sprite = pSprites [3];
 		//east
 		else if (arcTan < -67.5 && arcTan >= -112.5)
 			//arcTan = -90;
-			GetComponent<SpriteRenderer> ().sprite = pSprites [3];
+			GetComponent<SpriteRenderer> ().sprite = pSprites [2];
 		//south-east
 		else if (arcTan < -112.5 && arcTan >= -157.5)
 			//arcTan = -135;
-			GetComponent<SpriteRenderer> ().sprite = pSprites [4];
+			GetComponent<SpriteRenderer> ().sprite = pSprites [1];
 		//south
 		else if (arcTan < -157.5 && arcTan >= -202.5)
 			//arcTan = -180;
-			GetComponent<SpriteRenderer> ().sprite = pSprites [6];
+			GetComponent<SpriteRenderer> ().sprite = pSprites [0];
 		//south-west
 		else if (arcTan < -202.5 && arcTan >= -247.5)
 			//arcTan = -225;
@@ -217,11 +236,11 @@ public class Player : MonoBehaviour {
 		//west
 		else if ((arcTan >= -270 && arcTan < -247.5) || (arcTan <= 90 && arcTan >= 67.5))
 			//arcTan = 90;
-			GetComponent<SpriteRenderer> ().sprite = pSprites [8];
+			GetComponent<SpriteRenderer> ().sprite = pSprites [6];
 		//north-west
 		else if (arcTan < 67.5 && arcTan >= 22.5)
 			//arcTan = 45;
-			GetComponent<SpriteRenderer> ().sprite = pSprites [0];
+			GetComponent<SpriteRenderer> ().sprite = pSprites [5];
 	}
 
 	// must be called once in Update() to allow for the weapons to correctly give the following attributes their correct values:

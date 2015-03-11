@@ -13,7 +13,7 @@ namespace AssemblyCSharp
 {
 	public class Probability<T>
 	{
-		Random random = new Random();
+		public static Random random = new Random();
 		List<Pair<T,double>> prob = new List<Pair<T,double>>();
 		public Probability()
 		{
