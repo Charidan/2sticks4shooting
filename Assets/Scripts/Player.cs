@@ -24,6 +24,8 @@ public class Player : MonoBehaviour {
 	public Vector2 speed;
 	public Vector2 movement;
 
+	protected Transform enemy;
+
 	protected Color UI_color;
 
 	protected HealthBar hit_points;
@@ -48,6 +50,8 @@ public class Player : MonoBehaviour {
 
 		reload_timer = 0;
 		reload_timer_increment = 0;
+
+		enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
 
 		// should be edited after creation with the appropriate player HUD color
 		UI_color = new Color (0, 1, 1, 1);
@@ -144,11 +148,6 @@ public class Player : MonoBehaviour {
 					gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
 				}
 			}
-			
-			// Test hp (-5 on space press, +0.05 per update cycle)
-			if (Input.GetKeyDown(KeyCode.Space)) {
-				adj_hp (-500);
-			}	
 		}
 	}
 	
@@ -169,6 +168,11 @@ public class Player : MonoBehaviour {
 				curr_hp = max_hp;
 			else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
 				adj_hp (5);
+		}
+
+		// Adjust hp based on enemy distance
+		if(Vector3.Distance(enemy.position, transform.position) < 1.0f) {
+			adj_hp(-50);
 		}
 	}
 
