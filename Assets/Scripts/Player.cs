@@ -37,22 +37,24 @@ public class Player : MonoBehaviour {
 	void Awake()
 	{
 		num_players = 0;
-		// load all frames in fruitsSprites array
-		pSprites = Resources.LoadAll<Sprite>("examplesheet");
-	}
-
-	// Use this for initialization
-	void Start () {
-		//particleSystem.renderer.sortingLayerName = "UI";
-
 		max_hp = 10000;
 		curr_hp = 10000;
 
 		reload_timer = 0;
 		reload_timer_increment = 0;
 
+		weapon_initialize = false; 
+
 		// should be edited after creation with the appropriate player HUD color
 		UI_color = new Color (0, 1, 1, 1);
+
+		// load all frames in fruitsSprites array
+		pSprites = Resources.LoadAll<Sprite>("examplesheet");
+	}
+
+	// Use this for initialization
+	void Start () {
+		speed = new Vector2 (10, 10);
 
 		num_players++; 
 
@@ -60,10 +62,6 @@ public class Player : MonoBehaviour {
 		hit_points = (HealthBar) Instantiate(Resources.Load<HealthBar>("Prefabs/HealthBar"));
 		hit_points.Initialize (this);
 		hit_points.setColor (UI_color);
-
-		weapon_initialize = false; 
-
-		speed = new Vector2 (10, 10);
 
 		// creates an instance of Reticule for the specific player and sets its color to the default UI_color
 		gun_cursor = (Reticule) Instantiate(Resources.Load<Reticule>("Prefabs/Reticule"));
@@ -91,7 +89,8 @@ public class Player : MonoBehaviour {
 			movement = new Vector2(speed.x * inputX, speed.y * inputY);
 
 			// to calculate the interval in which to add a bullet to curr_ammo
-			reload_timer_increment = curr_weapon.getReloadSpeed () / curr_weapon.getClipSize();
+			if(weapon_initialize)
+				reload_timer_increment = curr_weapon.getReloadSpeed () / curr_weapon.getClipSize();
 
 			// Starts the reload process for the player only if their clip is full
 			if(Input.GetKeyDown(KeyCode.R) && curr_ammo != curr_weapon.getClipSize()){

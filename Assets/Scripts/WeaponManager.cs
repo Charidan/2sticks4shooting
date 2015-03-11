@@ -11,7 +11,7 @@ public class WeaponManager: MonoBehaviour {
 	 * 3 - Mortar
 	 */
 	public Weapon[] weapon_list; 
-	void Start() {
+	void Awake() {
 		// Create instances of each weapon within the weapon list here
 		weapon_list = new Weapon[3];
 		weapon_list [0] = (BasicWeapon)gameObject.AddComponent ("BasicWeapon");
