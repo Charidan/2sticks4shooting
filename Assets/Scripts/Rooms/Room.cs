@@ -55,6 +55,8 @@ namespace AssemblyCSharp
 			Vector2 trans = new Vector2(0,0);
 			bool rotate = false;
 
+			Vector2 myCoord = (Vector2) FloorGraph.singleton.get (this);
+
 			switch (dir)
 			{
 				case FloorManager.Direction.NORTH:
@@ -67,9 +69,18 @@ namespace AssemblyCSharp
 					}
 				    else
 					{
+						// make sure there is empty space to build a new room in
+						myCoord.y += 1;
+						Room adj = FloorGraph.singleton.get(myCoord);
+						if(adj != null)
+						{
+							if(adj.doorSouth) doorNorth = true;
+							return;
+						}
+
 						// door is good, actually make it
 						doorNorth = true;
-						trans.y += offset_amount/2;
+						trans.y += offset_amount/2+0.4f;
 					}
 				break;
 				case FloorManager.Direction.EAST:
@@ -80,9 +91,17 @@ namespace AssemblyCSharp
 					}
 				    else
 					{
+						myCoord.x += 1;
+						Room adj = FloorGraph.singleton.get(myCoord);
+						if(adj != null)
+						{
+							if(adj.doorWest) doorEast = true;
+							return;
+						}
+
 						doorEast = true;
 						rotate = true;
-						trans.x += offset_amount/2;
+						trans.x += offset_amount/2+0.4f;
 					}
 				break;
 				case FloorManager.Direction.SOUTH:
@@ -93,8 +112,16 @@ namespace AssemblyCSharp
 					}
 				    else
 					{
+						myCoord.y -= 1;
+						Room adj = FloorGraph.singleton.get(myCoord);
+						if(adj != null)
+						{
+							if(adj.doorNorth) doorSouth = true;
+							return;
+						}
+
 						doorSouth = true;
-						trans.y -= offset_amount/2;
+						trans.y -= offset_amount/2+0.4f;
 					}
 				break;
 				case FloorManager.Direction.WEST:
@@ -105,9 +132,17 @@ namespace AssemblyCSharp
 					}
 				    else
 					{
+						myCoord.x -= 1;
+						Room adj = FloorGraph.singleton.get(myCoord);
+						if(adj != null)
+						{
+							if(adj.doorEast) doorWest = true;
+							return;
+						}
+
 						doorWest = true;
 						rotate = true;
-						trans.x -= offset_amount/2;
+						trans.x -= offset_amount/2+0.4f;
 					}
 				break;
 			}
@@ -125,7 +160,7 @@ namespace AssemblyCSharp
 			// Make sure to allow door access and not to layer walls over doors
 			for(int x = -offset_amount/2; x <= offset_amount/2; x++)
 			{
-				if(x != offset_amount/2 && (x != 0 || !doorNorth))
+				if((x != 0 || !doorNorth))
 				{
 					if(x == 0)
 					{
@@ -138,9 +173,9 @@ namespace AssemblyCSharp
 						myCoord.y -= 1;
 					}
 					Wall w = (Wall) Instantiate(Resources.Load<Wall>("Prefabs/Wall"), transform.position, transform.rotation);
-					w.rigidbody2D.position += new Vector2((offset_amount/10)*x,offset_amount/2);
+					w.rigidbody2D.position += new Vector2(x,offset_amount/2+0.4f);
 				}
-				if(x != -offset_amount/2 && (x != 0 || !doorSouth))
+				if((x != 0 || !doorSouth))
 				{
 					if(x == 0)
 					{
@@ -153,12 +188,12 @@ namespace AssemblyCSharp
 						myCoord.y += 1;
 					}
 					Wall w = (Wall) Instantiate(Resources.Load<Wall>("Prefabs/Wall"), transform.position, transform.rotation);
-					w.rigidbody2D.position += new Vector2((offset_amount/10)*x,-offset_amount/2);
+					w.rigidbody2D.position += new Vector2(x,-offset_amount/2-0.4f);
 				}
 			}
 			for(int y = -offset_amount/2; y <= offset_amount/2; y++)
 			{
-				if(y != -offset_amount/2 && (y != 0 || !doorEast))
+				if((y != 0 || !doorEast))
 				{
 					if(y == 0)
 					{
@@ -171,9 +206,9 @@ namespace AssemblyCSharp
 						myCoord.x -= 1;
 					}
 					Wall w = (Wall) Instantiate(Resources.Load<Wall>("Prefabs/Wall"), transform.position, transform.rotation*Quaternion.Euler(0, 0, 90));
-					w.rigidbody2D.position += new Vector2(offset_amount/2,(offset_amount/10)*y);
+					w.rigidbody2D.position += new Vector2(offset_amount/2+0.4f,y);
 				}
-				if(y != offset_amount/2 && (y != 0 || !doorWest))
+				if((y != 0 || !doorWest))
 				{
 					if(y == 0)
 					{
@@ -186,11 +221,30 @@ namespace AssemblyCSharp
 						myCoord.x += 1;
 					}
 					Wall w = (Wall) Instantiate(Resources.Load<Wall>("Prefabs/Wall"), transform.position, transform.rotation*Quaternion.Euler(0, 0, 90));
-					w.rigidbody2D.position += new Vector2(-offset_amount/2,(offset_amount/10)*y);
+					w.rigidbody2D.position += new Vector2(-offset_amount/2-0.4f,y);
 				}
 			}
 		}
 
+		public void doSpawn()
+		{
+			Debug.Log ("doSpawn");
+			
+			int monsterCount = (int) Math.Ceiling(Probability<int>.random.NextDouble() * 10);
+			for (int i = 0; i < monsterCount; i++)
+			{
+				float x = (float) ((Probability<int>.random.NextDouble() * offset_amount) - offset_amount/2);
+				float y = (float) ((Probability<int>.random.NextDouble() * offset_amount) - offset_amount/2);
+
+				Vector2 spawnOffset = new Vector2(x, y);
+				Debug.Log("spawnOffset = " + spawnOffset);
+				
+				Enemy enemy = (Enemy) Instantiate(Resources.Load<Enemy>("Prefabs/Enemy"), transform.position, transform.rotation);
+				enemy.rigidbody2D.position += spawnOffset;
+
+				Debug.Log("SpawnPos = " + enemy.rigidbody2D.position);
+			}
+		}
 	}
 }
 

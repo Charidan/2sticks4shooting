@@ -32,5 +32,10 @@ namespace AssemblyCSharp
 			else
 				return null;
 		}
+
+		public Dictionary<Vector2,Room> getCoord2Room()
+		{
+			return coord2room;
+		}
 	}
 }

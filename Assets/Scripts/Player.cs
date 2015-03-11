@@ -146,6 +146,14 @@ public class Player : MonoBehaviour {
 					gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
 				}
 			}
+
+			// TEST ROOM CODE
+			if (Input.GetKeyDown(KeyCode.P)) {
+				Debug.Log("unexplored rooms =" + AssemblyCSharp.FloorManager.singleton.unexploredDoors);
+			}
+			if (Input.GetKeyDown(KeyCode.L)) {
+				Debug.Log("roomCount =" + AssemblyCSharp.FloorManager.singleton.roomCount);
+			}
 		}
 	}
 	
