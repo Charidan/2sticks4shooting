@@ -829,11 +829,11 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Nick Junius\n\tUI Designer/Engineer/Artist\n\tLead Gameplay Designer/Engineer\n\tPrimary
-    Testing\n\tContextualization\n\nNick Chase\n\tSenior Gameplay Engineer\n\tMusician
-    \n\nAlan Hsueh\n\tProducer\n\tCo-Artist/UI Artist\n\tSound Design\n\tAdditional
-    Programming\n\nChaiz Tuimoloau\n\tLead Artist\n\tAdditional Programming\n\nPatrick
-    Mathieu\n\tGameplay Engineer\n\nRichard Nicholson\n\tLevel Designer\n\tAdditional
-    Gameplay Programming"
+    Testing\n\tContextualization\n\nNick Chase\n\tSenior Gameplay Engineer\n\tStability
+    Engineer\n\tMusician \n\nAlan Hsueh\n\tProducer\n\tCo-Artist/UI Artist\n\tSound
+    Design\n\tAdditional Programming\n\nChaiz Tuimoloau\n\tLead Artist\n\tAdditional
+    Programming\n\nPatrick Mathieu\n\tGameplay Engineer\n\nRichard Nicholson\n\tLevel
+    Designer\n\tAdditional Gameplay Programming"
 --- !u!222 &1517019599
 CanvasRenderer:
   m_ObjectHideFlags: 0
