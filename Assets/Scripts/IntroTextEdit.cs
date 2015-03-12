@@ -4,15 +4,15 @@ using System.Collections;
 
 public class IntroTextEdit : MonoBehaviour {
 
-	int delay_text_appearance;
-	int delay_text_fade;
-	int text_fade;
+	private int delay_text_appearance;
+	private int delay_text_fade;
+	private int text_fade;
 
 	// Use this for initialization
 	void Start () {
 		delay_text_appearance = 0;
 		delay_text_fade = 0;
-		text_fade = 480;
+		text_fade = 540;
 	}
 	
 	// Update is called once per frame
