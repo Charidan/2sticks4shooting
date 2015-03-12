@@ -157,17 +157,21 @@ namespace AssemblyCSharp
 		{
 			room.doSpawn();
 
+			Vector2 roomCoord = (Vector2) FloorGraph.singleton.get (room);
+
 			int spawnCount = 0;
-			/*foreach(KeyValuePair<Vector2, Room> entry in FloorGraph.singleton.getCoord2Room())
+			foreach(KeyValuePair<Vector2, Room> entry in FloorGraph.singleton.getCoord2Room())
 			{
 				double rand = Probability<int>.random.NextDouble();
 				if(rand < 0.2)
 				{
+					Vector2 entryCoord = entry.Key;
+
 					entry.Value.doSpawn();
 					spawnCount++;
 				}
 				if(spawnCount > roomCount/4) break;
-			}*/
+			}
 		}
 
 		public int minDoors(int depth)
