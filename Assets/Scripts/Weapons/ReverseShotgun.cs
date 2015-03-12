@@ -6,7 +6,7 @@ public class ReverseShotgun : Weapon {
 	public Transform destination;
 	public ReverseShotgunBullet projectile;
 	public float speed;
-	
+	GameObject reticule;
 	// Use this for initialization
 	void Start () {
 		speed = 8.0f;
@@ -49,7 +49,9 @@ public class ReverseShotgun : Weapon {
 				proj.setOwner(owner);
 				Vector3 mouseLocation = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 				//initialize target point & speed for bullet
-				proj.Initialize (mouseLocation, speed, i);
+				reticule = GameObject.Find("Reticule(Clone)");
+				Debug.Log (reticule.transform.position);
+				proj.Initialize (reticule.transform.position, speed, i);
 			}
 		}
 	}

@@ -7,6 +7,7 @@ public class SinGun : Weapon {
 	public Transform destination;
 	public SinBullet projectile;
 	public float speed;
+	GameObject reticule;
 
 	// Use this for initialization
 	void Start () {
@@ -42,7 +43,10 @@ public class SinGun : Weapon {
 			proj.setOwner(owner);
 			Vector3 mouseLocation = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			//initialize target point & speed for bullet
-			proj.Initialize (mouseLocation, speed);
+			reticule = GameObject.Find("Reticule(Clone)");
+			Debug.Log (reticule.transform.position.x);
+			Vector2 reticulePos = new Vector2(reticule.transform.position.x,reticule.transform.position.y);
+			proj.Initialize (reticulePos, speed);
 		}
 	}
 	

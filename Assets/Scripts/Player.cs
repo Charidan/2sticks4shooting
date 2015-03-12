@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class Player : MonoBehaviour {
 
 	// used for determining the number of players will most likely need to be removed due to Unity's handling of static variables
@@ -86,7 +87,6 @@ public class Player : MonoBehaviour {
 
 			// Calculate the movement vector
 			movement = new Vector2(speed.x * inputX, speed.y * inputY);
-
 			// to calculate the interval in which to add a bullet to curr_ammo
 			if(weapon_initialize)
 				reload_timer_increment = curr_weapon.getReloadSpeed () / curr_weapon.getClipSize();
@@ -133,7 +133,7 @@ public class Player : MonoBehaviour {
 			}
 			
 			// Q key allows the player to switch weapons only if they aren't reloading
-			if (Input.GetKeyDown (KeyCode.Q) && !reloading) {
+			if ((Input.GetKeyDown (KeyCode.Q) || Input.GetButtonDown("X"))&& !reloading) {
 				if(curr_weapon == held_weapons[0]){
 					curr_weapon = held_weapons[1];
 					curr_ammo = curr_ammo_weapon1;
@@ -144,7 +144,6 @@ public class Player : MonoBehaviour {
 					gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
 				}
 			}
-
 			// TEST ROOM CODE
 			if (Input.GetKeyDown(KeyCode.P)) {
 				Debug.Log("unexplored rooms =" + AssemblyCSharp.FloorManager.singleton.unexploredDoors);
