@@ -224,6 +224,7 @@ MonoBehaviour:
   speed: {x: 0, y: 0}
   movement: {x: 0, y: 0}
   pSprites: []
+  reticule: {fileID: 0}
 --- !u!50 &219692119
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ MonoBehaviour:
   destination: {fileID: 0}
   projectile: {fileID: 0}
   speed: 0
+  reticule: {fileID: 0}
 --- !u!82 &219692124
 AudioSource:
   m_ObjectHideFlags: 0

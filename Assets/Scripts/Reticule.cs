@@ -35,7 +35,7 @@ public class Reticule : MonoBehaviour {
 			if(Input.GetJoystickNames().Length > 0){
 				float inputX = Input.GetAxis("RightHorizontal");
 				float inputY = -Input.GetAxis("RightVertical");
-				transform.position = new Vector3(transform.position.x + (inputX/6), transform.position.y + (inputY/6));
+				transform.position = new Vector3(transform.position.x + (inputX/9), transform.position.y + (inputY/9));
 			}
 			else
 				transform.position = new Vector3(mouse.x, mouse.y);
