@@ -36,6 +36,17 @@ public class Reticule : MonoBehaviour {
 				float inputX = Input.GetAxis("RightHorizontal");
 				float inputY = -Input.GetAxis("RightVertical");
 				transform.position = new Vector3(transform.position.x + (inputX/9), transform.position.y + (inputY/9));
+				//teleport reticule to character if it goes off screen
+				Vector2 posOnScreen = Camera.main.WorldToScreenPoint (transform.position);
+				//destroy bullet if it goes off screen
+				if(posOnScreen.y > Screen.height)
+					transform.position = new Vector3(transform.position.x, transform.position.y-(float).5, transform.position.z);
+				else if(posOnScreen.y < 0)
+					transform.position = new Vector3(transform.position.x, transform.position.y+(float).5, transform.position.z);
+				else if(posOnScreen.x > Screen.width)
+					transform.position = new Vector3(transform.position.x-(float).5, transform.position.y, transform.position.z);
+				else if(posOnScreen.x < 0)
+					transform.position = new Vector3(transform.position.x+(float).5, transform.position.y, transform.position.z);
 			}
 			else
 				transform.position = new Vector3(mouse.x, mouse.y);

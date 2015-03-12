@@ -44,9 +44,13 @@ public class BasicBullet : Projectile {
 		if(distance.sqrMagnitude < 100.01f)//not sure why but this is a good number, tested with debug.log to find a good number
 			Destroy (gameObject);
 		//destroy bullet if it goes off screen
+		else if(!gameObject.renderer.isVisible){
+			Destroy (gameObject);
+		}
+		/*
 		else if(posOnScreen.y > Screen.height || posOnScreen.y < 0 ||
 		        posOnScreen.x > Screen.width || posOnScreen.x < 0)
 			Destroy (gameObject);
-
+		*/
 	}
 }
