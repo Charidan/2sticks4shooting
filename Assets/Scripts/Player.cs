@@ -93,7 +93,7 @@ public class Player : MonoBehaviour {
 				reload_timer_increment = curr_weapon.getReloadSpeed () / curr_weapon.getClipSize();
 
 			// Starts the reload process for the player only if their clip is full
-			if((Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("A"))&& curr_ammo != curr_weapon.getClipSize()){
+			if(Input.GetButtonDown("Reload")&& curr_ammo != curr_weapon.getClipSize()){
 				curr_weapon.reload();
 				reloading = true; 
 				reload_timer = 0;
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour {
 			}
 			
 			// decrease ammo for semi-automatic weapons (all weapons not the Sin Wave Gun)
-			if ((Input.GetMouseButtonDown (0) || Input.GetButtonDown("RBumper")) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType() != 1) {
+			if (Input.GetButtonDown("Fire") && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType() != 1) {
 				curr_weapon.Fire(this);
 				curr_ammo--;
 				gun_cursor.setAmmoCount(curr_ammo);
@@ -125,7 +125,7 @@ public class Player : MonoBehaviour {
 			}
 			
 			// used to allow the Sin Wave Gun to fire automatically 
-			if ((Input.GetMouseButton (0) || Input.GetButton("RBumper")) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType () == 1) {
+			if (Input.GetButton("Fire") && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType () == 1) {
 				curr_weapon.Fire(this);
 				curr_ammo--;
 				gun_cursor.setAmmoCount(curr_ammo);
@@ -134,7 +134,7 @@ public class Player : MonoBehaviour {
 			}
 			
 			// Q key allows the player to switch weapons only if they aren't reloading
-			if ((Input.GetKeyDown (KeyCode.Q) || Input.GetButtonDown("X"))&& !reloading) {
+			if (Input.GetButtonDown("Switch Weapons")&& !reloading) {
 				if(curr_weapon == held_weapons[0]){
 					curr_weapon = held_weapons[1];
 					curr_ammo = curr_ammo_weapon1;
