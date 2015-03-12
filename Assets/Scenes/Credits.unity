@@ -800,7 +800,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 14, y: 188}
+  m_AnchoredPosition: {x: 14, y: 152}
   m_SizeDelta: {x: -1170, y: -664}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1517019598
@@ -828,12 +828,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Nick Junius\n\tUI Designer/Engineer/Artist\n\tLead Gameplay Designer/Engineer\n\tPrimary
-    Testing\n\tContextualization\n\nNick Chase\n\tSenior Gameplay Engineer\n\tStability
-    Engineer\n\tMusician \n\nAlan Hsueh\n\tProducer\n\tCo-Artist/UI Artist\n\tSound
-    Design\n\tAdditional Programming\n\nChaiz Tuimoloau\n\tLead Artist\n\tAdditional
-    Programming\n\nPatrick Mathieu\n\tGameplay Engineer\n\nRichard Nicholson\n\tLevel
-    Designer\n\tAdditional Gameplay Programming"
+  m_Text: "Nick Junius\n\t-UI Designer/Engineer/Artist\n\t-Lead Gameplay Designer/Engineer\n\t-Primary
+    Testing\n\t-Contextualization\nNick Chase\n\t-Senior Gameplay Engineer\n\t-Stability
+    Engineer\n\t-Musician \nAlan Hsueh\n\t-Producer\n\t-Co-Artist/UI Artist\n\t-Sound
+    Design\n\t-Additional Programming\nChaiz Tuimoloau\n\t-Lead Artist\n\t-Additional
+    Programming\nPatrick Mathieu\n\t-Gameplay Engineer\nRichard Nicholson\n\t-Level
+    Designer\n\t-Additional Gameplay Programming"
 --- !u!222 &1517019599
 CanvasRenderer:
   m_ObjectHideFlags: 0
