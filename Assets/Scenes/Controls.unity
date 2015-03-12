@@ -639,7 +639,7 @@ MonoBehaviour:
     Left Analog Stick +X :Move Right
 
 
-    Right Trigger :Fire Weapon
+    Right Bumper :Fire Weapon
 
     A Button :Reload
 
