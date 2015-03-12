@@ -3,11 +3,12 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-	protected Transform player;
+	protected GameObject player;
 	protected float speed = 4.0f;
 	protected float max_distance = 10.0f;
 	protected float min_distance = 5.0f;
 
+	protected Player player_ref;
 
 	public Sprite[] pSprites;
 	SpriteRenderer sr;
@@ -21,10 +22,10 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindGameObjectWithTag("Player").transform;
-
+		player = GameObject.FindGameObjectWithTag("Player");
 		GetComponent<SpriteRenderer> ().sprite = pSprites [1];
 
+		player_ref = (Player)player.GetComponent("Player");
 	}
 	
 	// Update is called once per frame
@@ -32,13 +33,17 @@ public class Enemy : MonoBehaviour {
 
 	void FixedUpdate() {
 		move_towards_player();
+
+		if(player != null && (Vector3.Distance(player.transform.position, transform.position) < 1.0f)) {
+			player_ref.adj_hp(-50);
+		}
 	}
 
 	void move_towards_player() {
-		Vector3 diff = (player.position - transform.position);
+		Vector3 diff = (player.transform.position - transform.position);
 		diff.Normalize();
 		float rotate_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-		if(Vector3.Distance(transform.position, player.position) <= min_distance) {
+		if(Vector3.Distance(transform.position, player.transform.position) <= min_distance) {
 			//transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotate_z - 90.0f);
 			rotateEnemy();
 			if(diff.x > 0) diff.x = 1.0f;
@@ -58,7 +63,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void rotateEnemy(){
-		float arcTan = Mathf.Atan2(player.position.y - transform.position.y, player.position.x - transform.position.x) * Mathf.Rad2Deg - 90;
+		float arcTan = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg - 90;
 		//convention is counterclockwise point is <equal, clockwise is just <
 		//face North
 		if (arcTan < 22.5 && arcTan >= -22.5)

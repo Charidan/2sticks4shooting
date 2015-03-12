@@ -24,8 +24,6 @@ public class Player : MonoBehaviour {
 	public Vector2 speed;
 	public Vector2 movement;
 
-	protected Transform enemy;
-
 	protected Color UI_color;
 
 	protected HealthBar hit_points;
@@ -172,15 +170,6 @@ public class Player : MonoBehaviour {
 				curr_hp = max_hp;
 			else if (Mathf.RoundToInt (curr_hp) % 1000 != 0) 
 				adj_hp (5);
-		}
-
-
-		// Adjust hp based on enemy distance
-		if(GameObject.FindGameObjectWithTag("Enemy") != null) {
-			enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
-			if(Vector3.Distance(enemy.position, transform.position) < 1.0f) {
-				adj_hp(-50);
-			}
 		}
 	}
 
