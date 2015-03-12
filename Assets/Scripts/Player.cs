@@ -174,6 +174,7 @@ public class Player : MonoBehaviour {
 				adj_hp (5);
 		}
 
+
 		// Adjust hp based on enemy distance
 		if(GameObject.FindGameObjectWithTag("Enemy") != null) {
 			enemy = GameObject.FindGameObjectWithTag("Enemy").transform;

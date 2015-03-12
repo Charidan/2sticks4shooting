@@ -627,26 +627,26 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Xbox Controls:
+  m_Text: ':Xbox Controls
 
 
-    Move Up: Left Analog Stick +Y
+    Left Analog Stick +Y :Move Up
 
-    Move Down: Left Analog Stick -Y
+    Left Analog Stick -Y :Move Down
 
-    Move Left: Left Analog Stick -X
+    Left Analog Stick -X :Move Left
 
-    Move Right: Left Analog Stick +X
-
-
-    Fire Weapon: Right Trigger
-
-    Reload: A Button
-
-    Switch Weapons: X Button
+    Left Analog Stick +X :Move Right
 
 
-    Move Reticule: Right Analog Stick'
+    Right Trigger :Fire Weapon
+
+    A Button :Reload
+
+    X Button :Switch Weapons
+
+
+    Right Analog Stick :Move Reticule'
 --- !u!222 &1555761419
 CanvasRenderer:
   m_ObjectHideFlags: 0
