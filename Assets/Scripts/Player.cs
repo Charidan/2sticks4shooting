@@ -161,7 +161,7 @@ public class Player : MonoBehaviour {
 	void FixedUpdate() {
 		// player can only get statuses updated if they are alive
 		if (curr_hp > 0) {
-			//rigidbody2D.velocity = movement;
+			rigidbody2D.velocity = movement;
 			rotatePlayer();
 
 			if(reload_timer < reload_timer_increment && reloading){

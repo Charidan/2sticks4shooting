@@ -33,8 +33,8 @@ public class Reticule : MonoBehaviour {
 		if (owner != null && owner.getHP() > 0) {
 			mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			if(Input.GetJoystickNames().Length > 0){
-				float inputX = Input.GetAxis("Horizontal");
-				float inputY = Input.GetAxis("Vertical");
+				float inputX = Input.GetAxis("RightHorizontal");
+				float inputY = Input.GetAxis("RightVertical");
 				transform.position = new Vector3(transform.position.x + (inputX/3), transform.position.y + (inputY/3));
 			}
 			else
