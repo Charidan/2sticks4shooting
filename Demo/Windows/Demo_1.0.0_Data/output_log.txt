@@ -1,0 +1,340 @@
+Initialize engine version: 4.6.3f1 (4753d8b6ef2b)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 870M     (ID=0x1199)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.0_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.0_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.0_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.0_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.0_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.0_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.034 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.0_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.0_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 3.205943 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.364361 ms (FindLiveObjects: 0.005864 ms CreateObjectMapping: 0.005864 ms MarkObjects: 0.089807 ms  DeleteObjects: 0.002565 ms)
+
+UnloadTime: 0.537378 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 166.
+Total: 0.392220 ms (FindLiveObjects: 0.005131 ms CreateObjectMapping: 0.005498 ms MarkObjects: 0.083575 ms  DeleteObjects: 0.018694 ms)
+
+UnloadTime: 0.266856 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 236.
+Total: 0.475429 ms (FindLiveObjects: 0.006964 ms CreateObjectMapping: 0.009530 ms MarkObjects: 0.130129 ms  DeleteObjects: 0.010630 ms)
+
+Created new player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+doSpawn
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (-5.7, -6.8)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-0.7, 13.6)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (2.7, -4.2)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (7.7, 16.2)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (6.0, 2.7)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (11.0, 23.1)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (-6.1, 6.1)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-1.1, 26.5)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (4.5, -2.6)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (9.5, 17.8)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+doSpawn
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (-3.2, 1.1)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-13.6, 21.5)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (-0.9, -5.5)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-11.3, 14.9)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (2.8, 6.2)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-7.6, 26.6)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (-6.9, -0.7)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-17.3, 19.7)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (3.0, -0.3)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-7.4, 20.1)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (4.3, -6.4)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-6.1, 14.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (-0.4, -4.3)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-10.8, 16.1)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (1.8, -1.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-8.6, 19.4)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (6.8, -3.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-3.6, 17.4)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (4.8, -6.7)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-5.6, 13.7)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+doSpawn
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+spawnOffset = (0.1, 0.4)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+SpawnPos = (-10.3, 20.8)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Can not play a disabled audio source
+ 
+(Filename:  Line: 377)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+Is touching player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
+UnloadTime: 1.016840 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 114 unused Assets to reduce memory usage. Loaded Objects now: 213.
+Total: 6.337841 ms (FindLiveObjects: 0.017594 ms CreateObjectMapping: 0.006598 ms MarkObjects: 0.127563 ms  DeleteObjects: 5.883306 ms)
+
