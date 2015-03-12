@@ -6,7 +6,7 @@ public class ReverseShotgun : Weapon {
 	public Transform destination;
 	public ReverseShotgunBullet projectile;
 	public float speed;
-	
+	GameObject reticule;
 	// Use this for initialization
 	void Start () {
 		speed = 8.0f;
@@ -19,6 +19,7 @@ public class ReverseShotgun : Weapon {
 		curr_ROF = 30;
 		damagePerProjectile = 400;
 		weapon_type = 2;
+		reticule = GameObject.Find("Reticule(Clone)");
 	}
 	
 	// FixedUpdate used for consistency
@@ -35,7 +36,6 @@ public class ReverseShotgun : Weapon {
 	override public void Fire (Player owner){
 		Vector3 mouseScreen = Input.mousePosition;
 		Vector3 mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
-		float arcTan = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90;
 
 
 		// make bullet only when the gun isn't reloading or already fired
@@ -45,11 +45,13 @@ public class ReverseShotgun : Weapon {
 			curr_ROF = 0;
 			//create an instance of the bullet
 			for(int i = -2; i < 3; i++){
-				ReverseShotgunBullet proj = (ReverseShotgunBullet)Instantiate (Resources.Load<ReverseShotgunBullet>("Prefabs/ReverseShotgunBullet"), transform.position, Quaternion.Euler(0, 0, arcTan));
-				proj.setOwner(owner);
 				Vector3 mouseLocation = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 				//initialize target point & speed for bullet
-				proj.Initialize (mouseLocation, speed, i);
+				Vector3 reticulePos = new Vector3(reticule.transform.position.x,reticule.transform.position.y, -10);
+				float arcTan = Mathf.Atan2(reticulePos.y - transform.position.y, reticulePos.x - transform.position.x) * Mathf.Rad2Deg - 90;
+				ReverseShotgunBullet proj = (ReverseShotgunBullet)Instantiate (Resources.Load<ReverseShotgunBullet>("Prefabs/ReverseShotgunBullet"), transform.position, Quaternion.Euler(0, 0, arcTan));
+				proj.setOwner(owner);
+				proj.Initialize (reticulePos, speed, i);
 			}
 		}
 	}

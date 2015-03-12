@@ -32,7 +32,13 @@ public class Reticule : MonoBehaviour {
 		// only update the reticule if there is an owner or if the owner is alive
 		if (owner != null && owner.getHP() > 0) {
 			mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-			transform.position = new Vector3(mouse.x, mouse.y);
+			if(Input.GetJoystickNames().Length > 0){
+				float inputX = Input.GetAxis("RightHorizontal");
+				float inputY = -Input.GetAxis("RightVertical");
+				transform.position = new Vector3(transform.position.x + (inputX/9), transform.position.y + (inputY/9));
+			}
+			else
+				transform.position = new Vector3(mouse.x, mouse.y);
 
 			GetComponent<SpriteRenderer>().sprite = all_reticules[weapon_type][curr_ammo];
 

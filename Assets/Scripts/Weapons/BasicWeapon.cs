@@ -8,6 +8,7 @@ public class BasicWeapon : Weapon {
 	public Transform destination;
 	public BasicBullet projectile;
 	public float speed;
+	public GameObject reticule;
 
 	//public AudioClip bAudio;
 	
@@ -23,6 +24,7 @@ public class BasicWeapon : Weapon {
 		curr_ROF = 0; 
 		damagePerProjectile = 2500;
 		weapon_type = 0;
+		reticule = GameObject.Find("Reticule(Clone)");
 	}
 
 	// FixedUpdate used for consistency
@@ -54,7 +56,8 @@ public class BasicWeapon : Weapon {
 			proj.setOwner(owner);
 			Vector3 mouseLocation = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			//initialize target point & speed for bullet
-			proj.Initialize (mouseLocation, speed);
+			Vector3 reticulePos = new Vector3(reticule.transform.position.x,reticule.transform.position.y, -10);
+			proj.Initialize (reticulePos, speed);
 		}
 	}
 	

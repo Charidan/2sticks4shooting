@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class Player : MonoBehaviour {
 
 	// used for determining the number of players will most likely need to be removed due to Unity's handling of static variables
@@ -31,6 +32,8 @@ public class Player : MonoBehaviour {
 
 	public Sprite[] pSprites;
 	SpriteRenderer sr;
+
+	public GameObject reticule;
 
 	void Awake()
 	{
@@ -67,6 +70,7 @@ public class Player : MonoBehaviour {
 		GetComponent<SpriteRenderer> ().sprite = pSprites [1];
 
 		Debug.Log("Created new player");
+		reticule = GameObject.Find("Reticule(Clone)");
 	}
 
 	// Update is called once per frame
@@ -84,13 +88,12 @@ public class Player : MonoBehaviour {
 
 			// Calculate the movement vector
 			movement = new Vector2(speed.x * inputX, speed.y * inputY);
-
 			// to calculate the interval in which to add a bullet to curr_ammo
 			if(weapon_initialize)
 				reload_timer_increment = curr_weapon.getReloadSpeed () / curr_weapon.getClipSize();
 
 			// Starts the reload process for the player only if their clip is full
-			if(Input.GetKeyDown(KeyCode.R) && curr_ammo != curr_weapon.getClipSize()){
+			if((Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("Y"))&& curr_ammo != curr_weapon.getClipSize()){
 				curr_weapon.reload();
 				reloading = true; 
 				reload_timer = 0;
@@ -113,7 +116,7 @@ public class Player : MonoBehaviour {
 			}
 			
 			// decrease ammo for semi-automatic weapons (all weapons not the Sin Wave Gun)
-			if (Input.GetMouseButtonDown (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType() != 1) {
+			if ((Input.GetMouseButtonDown (0) || Input.GetButtonDown("B"))&& curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType() != 1) {
 				curr_weapon.Fire(this);
 				curr_ammo--;
 				gun_cursor.setAmmoCount(curr_ammo);
@@ -122,7 +125,7 @@ public class Player : MonoBehaviour {
 			}
 			
 			// used to allow the Sin Wave Gun to fire automatically 
-			if (Input.GetMouseButton (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType () == 1) {
+			if ((Input.GetMouseButton (0) || Input.GetButtonDown("B"))&& curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType () == 1) {
 				curr_weapon.Fire(this);
 				curr_ammo--;
 				gun_cursor.setAmmoCount(curr_ammo);
@@ -131,7 +134,7 @@ public class Player : MonoBehaviour {
 			}
 			
 			// Q key allows the player to switch weapons only if they aren't reloading
-			if (Input.GetKeyDown (KeyCode.Q) && !reloading) {
+			if ((Input.GetKeyDown (KeyCode.Q) || Input.GetButtonDown("X"))&& !reloading) {
 				if(curr_weapon == held_weapons[0]){
 					curr_weapon = held_weapons[1];
 					curr_ammo = curr_ammo_weapon1;
@@ -142,7 +145,6 @@ public class Player : MonoBehaviour {
 					gun_cursor.setReticule(curr_weapon.getWeaponType(), curr_ammo);
 				}
 			}
-
 			// TEST ROOM CODE
 			if (Input.GetKeyDown(KeyCode.P)) {
 				Debug.Log("unexplored rooms =" + AssemblyCSharp.FloorManager.singleton.unexploredDoors);
@@ -184,7 +186,9 @@ public class Player : MonoBehaviour {
 	// 8-directional player rotation
 	void rotatePlayer(){
 		Vector3 mouseScreen = Input.mousePosition;
-		Vector3 mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
+		Vector3 reticulePos = reticule.transform.position;
+		Vector3 mouse = new Vector3(reticulePos.x, reticulePos.y, -10);
+		//mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
 		float arcTan = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90;
 		//convention is counterclockwise point is <equal, clockwise is just <
 		//face North

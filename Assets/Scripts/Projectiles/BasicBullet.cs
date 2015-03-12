@@ -11,6 +11,8 @@ public class BasicBullet : Projectile {
 	public void Initialize(Vector3 destination, float speed){
 		_destination = destination;
 		_speed = speed;
+		float arcTan = Mathf.Atan2(_destination.y - transform.position.y, _destination.x - transform.position.x) * Mathf.Rad2Deg - 90;
+		transform.rotation = Quaternion.Euler(0, 0, arcTan);
 	}
 	// Use this for initialization
 	void Start () {
@@ -20,7 +22,6 @@ public class BasicBullet : Projectile {
 		// Projectile traits
 		//set damage value
 		damage = 2500;
-
 
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
@@ -40,7 +41,7 @@ public class BasicBullet : Projectile {
 
 		//distance between bullet and destination
 		Vector3 distance = transform.position - _destination;
-		Vector2 posOnScreen = Camera.main.WorldToScreenPoint (transform.position);
+		Vector2 posOnScreen = _destination;
 		//destroy bullet if it reaches destinatio
 		if(distance.sqrMagnitude < 100.01f)//not sure why but this is a good number, tested with debug.log to find a good number
 			Destroy (gameObject);
