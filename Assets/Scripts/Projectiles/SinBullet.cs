@@ -42,11 +42,9 @@ public class SinBullet : Projectile {
 
 		Vector3 distance = transform.position - _destination;
 		Vector2 posOnScreen = Camera.main.WorldToScreenPoint (transform.position);
-		//destroy bullet if it reaches destinatio
-		if(distance.sqrMagnitude < 100.2f)//not sure why but this is a good number, tested with debug.log to find a good number
-			Destroy (gameObject);
 
-		else if(!gameObject.renderer.isVisible){
+		//destroy if it goes of screen
+		if(!gameObject.renderer.isVisible){
 			Destroy (gameObject);
 		}
 
