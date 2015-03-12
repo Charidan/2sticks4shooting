@@ -35,8 +35,6 @@ public class BasicBullet : Projectile {
 	// Update is called once per frame
 	void Update () {
 		// moves projectile towards cursor coordinates
-		//transform.position = Vector3.MoveTowards (transform.position, _destination, Time.deltaTime * _speed);
-		//rigidbody2D.velocity = transform.TransformDirection(new Vector3(0,0, _speed));
 		rigidbody2D.velocity = transform.up*_speed;
 
 		//distance between bullet and destination
