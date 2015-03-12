@@ -46,6 +46,11 @@ public class SinGun : Weapon {
 			//initialize target point & speed for bullet
 			Vector3 reticulePos = new Vector3(reticule.transform.position.x,reticule.transform.position.y, -10);
 			proj.Initialize (reticulePos, speed);
+
+			Vector3 antiReticule = new Vector3(transform.position.x - (reticule.transform.position.x - transform.position.x), transform.position.y - (reticule.transform.position.y - transform.position.y), -10);
+			SinBullet proj2 = (SinBullet)Instantiate (Resources.Load<SinBullet>("Prefabs/SinBullet"), transform.position, transform.rotation);
+			proj2.setOwner(owner);
+			proj2.Initialize (antiReticule, speed);
 		}
 	}
 	

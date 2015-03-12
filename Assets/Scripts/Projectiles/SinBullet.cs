@@ -32,7 +32,9 @@ public class SinBullet : Projectile {
 		if (coll.gameObject.tag == "Enemy") {
 			Destroy (coll.gameObject);
 		}
-		Destroy (gameObject);
+		if(coll.gameObject.name == "Wall(Clone)"){
+			Destroy (gameObject);
+		}
 	}
 	void Update () {
 		pos += transform.up * Time.deltaTime * MoveSpeed;
