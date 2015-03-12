@@ -82,6 +82,9 @@ public class OverlayControl : MonoBehaviour {
 		if (GetComponent<Image> ().color.a >= 1.0f) {delay_death_counter++;}
 
 		// after 60 updates, return to the main menu
-		if (delay_death_counter > 60) {Application.LoadLevel("MainMenu");}
+		if (delay_death_counter > 60) {
+
+			Application.LoadLevel("MainMenu");
+		}
 	}
 }

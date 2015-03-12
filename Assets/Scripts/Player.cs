@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
 		
 		// should be edited after creation with the appropriate player HUD color
 		UI_color = new Color (0, 1, 1, 1);
-		// load all frames in fruitsSprites array
+		// load all frames in playersheet array
 		pSprites = Resources.LoadAll<Sprite>("playersheet");
 	}
 
