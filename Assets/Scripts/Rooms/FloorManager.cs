@@ -16,7 +16,19 @@ namespace AssemblyCSharp
 		Probability<int>[] doorsProb = new Probability<int>[21];
 		Probability<int> doorDirProb;
 
+		public static void resetFloor(int depth)
+		{
+			singleton = new FloorManager ();
+			FloorGraph.singleton = new FloorGraph ();
+			singleton.floorDepth = depth;
+		}
+
 		private FloorManager()
+		{
+			init ();
+		}
+
+		private void init ()
 		{
 			int drop1 = 10;
 			int drop2 = 15;
