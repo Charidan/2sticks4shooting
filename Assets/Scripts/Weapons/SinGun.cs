@@ -21,6 +21,7 @@ public class SinGun : Weapon {
 		curr_ROF = 12; 
 		damagePerProjectile = 2000;
 		weapon_type = 1;
+		reticule = GameObject.Find("Reticule(Clone)");
 	}
 
 	// FixedUpdate used for consistency
@@ -43,9 +44,7 @@ public class SinGun : Weapon {
 			proj.setOwner(owner);
 			Vector3 mouseLocation = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			//initialize target point & speed for bullet
-			reticule = GameObject.Find("Reticule(Clone)");
-			Debug.Log (reticule.transform.position.x);
-			Vector2 reticulePos = new Vector2(reticule.transform.position.x,reticule.transform.position.y);
+			Vector3 reticulePos = new Vector3(reticule.transform.position.x,reticule.transform.position.y, -10);
 			proj.Initialize (reticulePos, speed);
 		}
 	}

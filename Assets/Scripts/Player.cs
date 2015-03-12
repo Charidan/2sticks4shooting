@@ -35,6 +35,8 @@ public class Player : MonoBehaviour {
 	public Sprite[] pSprites;
 	SpriteRenderer sr;
 
+	public GameObject reticule;
+
 	void Awake()
 	{
 		num_players = 0;
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour {
 		GetComponent<SpriteRenderer> ().sprite = pSprites [1];
 
 		Debug.Log("Created new player");
+		reticule = GameObject.Find("Reticule(Clone)");
 	}
 
 	// Update is called once per frame
@@ -92,7 +95,7 @@ public class Player : MonoBehaviour {
 				reload_timer_increment = curr_weapon.getReloadSpeed () / curr_weapon.getClipSize();
 
 			// Starts the reload process for the player only if their clip is full
-			if(Input.GetKeyDown(KeyCode.R) && curr_ammo != curr_weapon.getClipSize()){
+			if((Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("Y"))&& curr_ammo != curr_weapon.getClipSize()){
 				curr_weapon.reload();
 				reloading = true; 
 				reload_timer = 0;
@@ -115,7 +118,7 @@ public class Player : MonoBehaviour {
 			}
 			
 			// decrease ammo for semi-automatic weapons (all weapons not the Sin Wave Gun)
-			if (Input.GetMouseButtonDown (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType() != 1) {
+			if ((Input.GetMouseButtonDown (0) || Input.GetButtonDown("B"))&& curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType() != 1) {
 				curr_weapon.Fire(this);
 				curr_ammo--;
 				gun_cursor.setAmmoCount(curr_ammo);
@@ -124,7 +127,7 @@ public class Player : MonoBehaviour {
 			}
 			
 			// used to allow the Sin Wave Gun to fire automatically 
-			if (Input.GetMouseButton (0) && curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType () == 1) {
+			if ((Input.GetMouseButton (0) || Input.GetButtonDown("B"))&& curr_ammo != 0 && curr_weapon.canFire() && !reloading && curr_weapon.getWeaponType () == 1) {
 				curr_weapon.Fire(this);
 				curr_ammo--;
 				gun_cursor.setAmmoCount(curr_ammo);
@@ -158,7 +161,7 @@ public class Player : MonoBehaviour {
 	void FixedUpdate() {
 		// player can only get statuses updated if they are alive
 		if (curr_hp > 0) {
-			rigidbody2D.velocity = movement;
+			//rigidbody2D.velocity = movement;
 			rotatePlayer();
 
 			if(reload_timer < reload_timer_increment && reloading){
@@ -194,7 +197,9 @@ public class Player : MonoBehaviour {
 	// 8-directional player rotation
 	void rotatePlayer(){
 		Vector3 mouseScreen = Input.mousePosition;
-		Vector3 mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
+		Vector3 reticulePos = reticule.transform.position;
+		Vector3 mouse = new Vector3(reticulePos.x, reticulePos.y, -10);
+		//mouse = Camera.main.ScreenToWorldPoint (mouseScreen);
 		float arcTan = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x) * Mathf.Rad2Deg - 90;
 		//convention is counterclockwise point is <equal, clockwise is just <
 		//face North

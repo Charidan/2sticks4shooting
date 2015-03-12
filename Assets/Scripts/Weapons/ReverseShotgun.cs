@@ -19,6 +19,7 @@ public class ReverseShotgun : Weapon {
 		curr_ROF = 30;
 		damagePerProjectile = 400;
 		weapon_type = 2;
+		reticule = GameObject.Find("Reticule(Clone)");
 	}
 	
 	// FixedUpdate used for consistency
@@ -49,9 +50,10 @@ public class ReverseShotgun : Weapon {
 				proj.setOwner(owner);
 				Vector3 mouseLocation = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 				//initialize target point & speed for bullet
-				reticule = GameObject.Find("Reticule(Clone)");
-				Debug.Log (reticule.transform.position);
-				proj.Initialize (reticule.transform.position, speed, i);
+				Vector3 reticulePos = new Vector3(reticule.transform.position.x,reticule.transform.position.y, -10);
+				Debug.Log (mouseLocation);
+				Debug.Log (reticulePos);
+				proj.Initialize (reticulePos, speed, i);
 			}
 		}
 	}
