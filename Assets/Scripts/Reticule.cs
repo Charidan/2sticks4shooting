@@ -32,7 +32,7 @@ public class Reticule : MonoBehaviour {
 		// only update the reticule if there is an owner or if the owner is alive
 		if (owner != null && owner.getHP() > 0) {
 			mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-			if(Input.GetJoystickNames().Length > 0){
+			if(Input.GetJoystickNames().Length > 0 && (Input.GetAxis("Mouse Y") == 0 && Input.GetAxis("Mouse X") == 0)){
 				float inputX = Input.GetAxis("RightHorizontal");
 				float inputY = -Input.GetAxis("RightVertical");
 				transform.position = new Vector3(transform.position.x + (inputX/6), transform.position.y + (inputY/6));

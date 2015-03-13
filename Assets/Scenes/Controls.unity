@@ -458,7 +458,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Keyboard Controls:
+  m_Text: 'Default Keyboard Controls:
 
 
     Move Up: ''W''
@@ -627,7 +627,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ':Xbox Controls
+  m_Text: ':Default Xbox Controls
 
 
     Left Analog Stick +Y :Move Up
