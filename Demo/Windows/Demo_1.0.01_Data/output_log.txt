@@ -6,13 +6,21 @@ Direct3D:
     Vendor:   NVIDIA
     VRAM:     3072 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting\Demo\Windows\Demo_1.0.01_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading D:\Documents\Santa Cruz\CS115\2sticks4shooting\Demo\Windows\Demo_1.0.01_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting\Demo\Windows\Demo_1.0.01_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading D:\Documents\Santa Cruz\CS115\2sticks4shooting\Demo\Windows\Demo_1.0.01_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting\Demo\Windows\Demo_1.0.01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading D:\Documents\Santa Cruz\CS115\2sticks4shooting\Demo\Windows\Demo_1.0.01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.036 seconds
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.01_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.01_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.01_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.01_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.01_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.01_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.038 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.01_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Documents\Santa Cruz\CS115\2sticks4shooting Executables\Windows\Demo_1.0.01_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 2.889601 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.407982 ms (FindLiveObjects: 0.009530 ms CreateObjectMapping: 0.006231 ms MarkObjects: 0.107768 ms  DeleteObjects: 0.002565 ms)
+
