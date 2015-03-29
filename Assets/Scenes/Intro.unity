@@ -212,8 +212,8 @@ MonoBehaviour:
   m_Text: "A week has passed since they took the colony of Threshold. The empire of
     a millenia is failing, almost as if they knew... \r\n  \nI remember stories of
     world consuming forces and ancient evils; of demons and destruction; but those
-    were just stories\u2026\r\n   \nNow, as they push farther into our territory,
-    the hope of our civilization rests with us and our lost vessel...\r\n"
+    were just stories...\r\n   \nNow, as they push farther into our territory, the
+    hope of our civilization rests with us and our lost vessel...\r\n"
 --- !u!222 &624184798
 CanvasRenderer:
   m_ObjectHideFlags: 0
