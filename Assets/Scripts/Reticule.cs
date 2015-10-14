@@ -19,7 +19,7 @@ public class Reticule : MonoBehaviour {
 		all_reticules = new Sprite[4][];
 		all_reticules [0] = Resources.LoadAll<Sprite> ("reticlesheet1");
 		all_reticules [1] = Resources.LoadAll<Sprite> ("reticlesheet4");
-		all_reticules [2] = Resources.LoadAll<Sprite> ("reticlesheet2");
+		all_reticules [2] = Resources.LoadAll<Sprite> ("reticlesheet2Opacity2");
 		all_reticules [3] = Resources.LoadAll<Sprite> ("reticlesheet3");
 	}
 
